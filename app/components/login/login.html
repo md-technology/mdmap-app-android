@@ -1,0 +1,22 @@
+<style>@import "login.css";</style>
+<div>
+
+    <paper-spinner [active]="loading"></paper-spinner>
+
+    <paper-card heading="登录APP" heading-color="#e9005f">
+        <div content>
+            <form>
+                <paper-input label="用户名" #username></paper-input>
+                <paper-input label="密码" #password type="password"></paper-input>
+            </form>
+        </div>
+        <div actions>
+            <paper-button dismissive
+                    (click)="goSignup()">注册</paper-button>
+            <paper-button raised id="login"
+                          [disabled]="loading"
+                          (click)="login($event, username.value, password.value)">登录</paper-button>
+        </div>
+    </paper-card>
+
+</div>

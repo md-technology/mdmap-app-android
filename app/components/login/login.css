@@ -1,0 +1,14 @@
+#login {
+    background: green;
+    color: white;
+}
+
+paper-card {
+    width: 100%;
+}
+
+paper-spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}

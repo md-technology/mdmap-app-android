@@ -1,0 +1,6 @@
+body /deep/ .icon-marker img {
+    border: 2px solid white;
+    width: 34px;
+    height: 34px;
+    box-shadow: 2px 2px 10px #7B7B7B;
+}

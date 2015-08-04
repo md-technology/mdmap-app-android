@@ -1,0 +1,15 @@
+<style>@import "maps.css";</style>
+
+<!-- [zoom]="zoom" [latitude]="latitude" [longitude]="longitude"-->
+<leaflet-map style="position: absolute;
+    width: 100%;
+    height: 100%;">
+    <leaflet-geolocation enable-high-accuracy
+                         set-view
+                         [maximum-age]="5000"
+                         [max-zoom]="16"
+                         #geolocation>
+    </leaflet-geolocation>
+    <leaflet-panoramio [container]="geolocation.container"></leaflet-panoramio>
+</leaflet-map>
+<paper-fab icon="add" (click)="onFab()"></paper-fab>

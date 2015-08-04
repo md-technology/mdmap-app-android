@@ -1,0 +1,96 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icons/av-icons.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+
+<dom-module id="app-front-page">
+  <style>
+    :host {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+    }
+    #section {
+      box-sizing: border-box;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    #section1 {
+      background-color: rgb(255, 255, 141);
+    }
+    #core_icon {
+      height: 256px;
+      width: 256px;
+      z-index: 100;
+    }
+    #div {
+      box-sizing: border-box;
+      position: relative;
+      height: 80px;
+      padding: 24px;
+      color: rgb(255, 255, 255);
+      font-size: 30px;
+      background-color: rgb(255, 235, 59);
+    }
+    #div2 {
+      position: absolute;
+      color: rgb(255, 255, 255);
+      bottom: 50px;
+      right: 24px;
+      z-index: 100;
+    }
+    #paper_fab {
+      background-color: rgb(255, 64, 129);
+    }
+    #section2 {
+      box-sizing: border-box;
+      width: 420px;
+      height: 582px;
+      left: 1260px;
+      top: 320px;
+    }
+  </style>
+  <template>
+    <section id="section" class="vertical layout">
+      <section id="section1" class="top flex layout horizontal center center-justified" hero
+               hero-id="top">
+        <core-icon icon="category-images:knowledge" id="core_icon" cross-fade-delayed designmeta="topeka-image"></core-icon>
+      </section>
+      <div id="div" class="bottom" hero hero-id="bottom">
+        <span id="span">General Knowledge</span>
+      </div>
+      <div id="div1" hero class="dummy"></div>
+      <div id="div2" class="fab fab-0">
+        <paper-fab icon="av:play-arrow" id="paper_fab" cross-fade-delayed></paper-fab>
+      </div>
+    </section>
+  </template>
+</dom-module>
+<script>
+(function() {
+  Polymer({
+    is: 'app-front-page',
+
+    properties: {
+      foo: {
+        type: String,
+        value: 'bar',
+        notify: true
+      }
+    }
+  });
+})();
+</script>

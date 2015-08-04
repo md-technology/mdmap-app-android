@@ -1,0 +1,40 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="leaflet-locator">
+    <template></template>
+</dom-module>
+<script>
+(function () {
+    Polymer({
+        is: 'leaflet-locator',
+
+        properties: {
+            watch: Boolean,
+            container: {
+                type: Object,
+                observer: '_containerChanged'
+            }
+        },
+
+        _containerChanged: function() {
+            if (this.container) {
+                this.container.on('locationfound locationerror', function(e) {
+                    this.fire(e.type, e);
+                }, this);
+
+                this.container.on('locationfound', function(e) {
+                    this.fire(e.type, e);
+                }, this);
+
+                this.container.locate({
+                    watch: this.watch
+                });
+            }
+        },
+
+        ready: function() {
+
+        }
+    });
+})();
+</script>

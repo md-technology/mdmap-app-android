@@ -1,0 +1,69 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+
+<dom-module id="toolbar-profile">
+    <style>
+        :host {
+            box-sizing: border-box;
+        }
+
+        :host img.profile {
+            border-radius: 50%;
+            width: 64px;
+            height: 64px;
+            margin-bottom: 20px;
+        }
+
+        #coverimage {
+            height: 168px;
+            top: 0;
+            background-blend-mode: multiply;
+            background-repeat: no-repeat;
+            background-color: #999;
+            background-size: cover;
+        }
+
+        :host .bottom :last-child {
+            font-size: small;
+            opacity: 0.8;
+        }
+    </style>
+
+    <template>
+        <paper-toolbar id="navheader" class="tall">
+            <iron-image id="coverimage" placeholder="images/beach.jpg"
+                        src="{{computeCover(user.profileCover)}}"
+                        sizing="cover" preload fade class="fit"></iron-image>
+            <img class="middle profile"
+                 src="{{computeCover(user.avatar)}}"
+                 hidden="{{!user.avatar}}">
+
+            <div class="bottom layout vertical">
+                <span>{{user.name}}</span>
+                <span>{{user.email}}</span>
+            </div>
+        </paper-toolbar>
+    </template>
+</dom-module>
+<script>
+    (function () {
+        Polymer({
+            is: 'toolbar-profile',
+
+            properties: {
+                user: {
+                    type: Object,
+                    value: {}
+                }
+            },
+
+            computeCover: function (avatar) {
+                if (avatar) {
+                    return 'http://static.photoshows.cn/' + avatar.ossKey;
+                } else {
+                    return '';
+                }
+            }
+        });
+    })();
+</script>
