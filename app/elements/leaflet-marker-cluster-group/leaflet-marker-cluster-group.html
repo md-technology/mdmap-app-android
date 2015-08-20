@@ -1,0 +1,71 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<script type="text/javascript"
+        src="../../bower_components/leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
+<link rel="import" href="../leaflet-photo-marker/leaflet-photo-marker.html">
+
+<dom-module id="leaflet-marker-cluster-group">
+    <style>
+    </style>
+    <template>
+    </template>
+</dom-module>
+<script>
+(function () {
+    var L = window.L || {};
+
+    Polymer({
+        is: 'leaflet-marker-cluster-group',
+
+        properties: {
+            markers: {
+                type: Array,
+                observer: '_markersChanged'
+            },
+            container: {
+                type: Object,
+                observer: '_containerChanged'
+            }
+        },
+
+        _containerChanged: function() {
+            if (this.container) {
+                this.container.addLayer(this._clusterGroup);
+            }
+        },
+
+        _markersChanged: function() {
+            for(var i in this.markers) {
+                this.addMarker(this._createMarker(this.markers[i]));
+            }
+        },
+
+        _createMarker: function(photo) {
+            var newElement = document.createElement('div');
+            newElement.className = 'icon-marker';
+            var img = document.createElement('img');
+            img.setAttribute('src', photo.ossKey);
+            newElement.appendChild(img);
+            newElement.addEventListener('click', this.onMarkerClick);
+            newElement.photo = photo;
+
+            var marker = L.photoMarker(photo, newElement);
+            return marker;
+        },
+
+        addMarker: function(marker) {
+            this._clusterGroup.addLayer(marker);
+        },
+
+        onMarkerClick: function(e) {
+            console.log('marker clicked');
+            console.log(e);
+            console.log(this.photo);
+        },
+
+        ready: function() {
+            this._clusterGroup = L.markerClusterGroup();
+            console.log('clusterGroup initialed');
+        }
+    });
+})();
+</script>

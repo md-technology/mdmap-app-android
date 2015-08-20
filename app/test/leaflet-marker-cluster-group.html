@@ -1,0 +1,73 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>my-list-basic</title>
+
+    <script src="../../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <script src="../../bower_components/web-component-tester/browser.js"></script>
+    <script src="../../bower_components/test-fixture/test-fixture-mocha.js"></script>
+    <link rel="import" href="../../bower_components/test-fixture/test-fixture.html">
+
+    <!-- Step 1: import the element to test -->
+    <link rel="import" href="../../bower_components/leaflet-map/leaflet-map.html">
+    <link rel="import" href="../elements/leaflet-marker-cluster-group/leaflet-marker-cluster-group.html">
+
+</head>
+<body>
+
+<test-fixture id="basic">
+    <template>
+        <leaflet-map style="width: 100%;height: 500px;"
+                     max-zoom="18"
+                fit-to-markers>
+            <leaflet-marker-cluster-group id="marker-cluster"></leaflet-marker-cluster-group>
+        </leaflet-map>
+    </template>
+</test-fixture>
+
+<script>
+    suite('leaflet-marker-cluster-group tests', function() {
+        var list, markerCluster, listItems;
+
+        setup(function() {
+            list = fixture('basic');
+            markerCluster = document.getElementById('marker-cluster');
+        });
+
+        test('Item lengths should be equalled', function(done) {
+            // Test a property
+            // Invalid value used as weak map key
+            markerCluster.markers = [
+                {
+                    location: {
+                        position: [30, 120]
+                    },
+                    ossKey: 'http://static.photoshows.cn/26494370284427412811401443301.JPG@!panor-lg'
+                }
+            ];
+
+            // Data bindings will stamp out new DOM asynchronously
+            // so wait to check for updates
+            flush(function() {
+                listItems = list.querySelectorAll('.icon-marker');
+                assert.equal(1, listItems.length);
+                done();
+            });
+        })
+    });
+</script>
+
+</body>
+</html>

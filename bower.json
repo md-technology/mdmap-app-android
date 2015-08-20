@@ -7,7 +7,9 @@
     "platinum-elements": "PolymerElements/platinum-elements#1.0.1",
     "neon-elements": "PolymerElements/neon-elements#1.0.0",
     "page": "visionmedia/page.js#~1.6.3",
-    "leaflet-map": "1.1.0"
+    "leaflet-map": "1.1.0",
+    "hammerjs": "2.0.4",
+    "leaflet.markercluster": "~0.4.0"
   },
   "devDependencies": {
     "web-component-tester": "*",

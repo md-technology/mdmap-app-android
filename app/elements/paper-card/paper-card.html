@@ -74,18 +74,17 @@ By default, the `aria-label` will be set to the value of the `heading` attribute
             }
         </style>
 
-        <paper-shadow id="shadow" animated?="{{animatedShadow}}" fit></paper-shadow>
-
-        <div class="header">
-            <template is="dom-if" if="{{image}}">
-                <img src="{{image}}">
-            </template>
-            <template is="dom-if" if="{{heading}}">
-                <h1 class="{{ {over: image} | tokenList }}" style="color:{{headingColor}}">{{heading}}</h1>
-            </template>
-        </div>
-
-        <content></content>
+        <paper-material elevation="1">
+            <div class="header">
+                <template is="dom-if" if="{{image}}">
+                    <img src="{{image}}">
+                </template>
+                <template is="dom-if" if="{{heading}}">
+                    <h1 class="{{ {over: image} | tokenList }}" style="color:{{headingColor}}">{{heading}}</h1>
+                </template>
+            </div>
+            <content></content>
+        </paper-material>
 
     </template>
 

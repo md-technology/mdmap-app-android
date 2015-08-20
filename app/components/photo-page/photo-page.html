@@ -1,0 +1,8 @@
+<style>@import "photo-page.css";</style>
+
+<!-- *ng-if="photoLoading" -->
+<paper-progress *ng-if="photoLoading" indeterminate id="photoLoading" ></paper-progress>
+<photo-dialog id="photoDialog"
+              (photo-dialog-closed)="onPhotoDialogClosed()"
+                [photo]="photo">
+</photo-dialog>

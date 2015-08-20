@@ -43,6 +43,11 @@ android adb logcat
 adb logcat | grep "^..chromium"
 ``` 
 
+## 注意点
+### google font
+注释掉了font-roboto里的加载google font的引用
+### angular2+polymer时polymer的双向绑定会有问题
+
 ## git
 ### 把已经存在的项目添加到github库
 ``` 
@@ -75,6 +80,9 @@ git remote -v
  origin  https://github.com/OWNER/REPOSITORY.git (fetch)
  origin  https://github.com/OWNER/REPOSITORY.git (push)
 
+monitorEvents($0)
+unmonitorEvents($0)
+monitorEvents(document.body, 'mouse')
 
 > A starting point for building web applications with Polymer 1.0
 

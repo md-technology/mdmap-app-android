@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>my-greeting-basic</title>
+
+    <script src="../../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <script src="../../bower_components/web-component-tester/browser.js"></script>
+    <script src="../../bower_components/test-fixture/test-fixture-mocha.js"></script>
+    <link rel="import" href="../../bower_components/test-fixture/test-fixture.html">
+
+    <!-- Step 1: import the element to test -->
+    <link rel="import" href="../../bower_components/leaflet-map/leaflet-map.html">
+    <link rel="import" href="../elements/leaflet-photo-marker/leaflet-photo-marker.html">
+
+</head>
+<body>
+
+<test-fixture id="basic">
+    <template>
+        <leaflet-map max-zoom="18" id="leaflet-map">
+        </leaflet-map>
+    </template>
+</test-fixture>
+
+<script>
+
+    suite('leaflet-photo-marker tests', function() {
+        var basic, leafletMap;
+
+        setup(function() {
+            basic = fixture('basic');
+            leafletMap = basic.querySelectorAll('#leaflet-map');
+
+        });
+
+        test('L photoMarker test!', function() {
+            assert.isFunction(L.photoMarker);
+            assert.isTrue(!!leafletMap);
+
+            var el = document.createElement('div');
+            L.photoMarker({location: {
+                position: [120, 30]
+            }}, el);
+
+//            assert.isTrue(!!leafletMap.map);
+
+            // Data bindings will stamp out new DOM asynchronously
+            // so wait to check for updates
+            flush(function() {
+//                listItems = list.querySelectorAll('li');
+//                assert.equal(list.items.length, listItems.length);
+                done();
+            });
+        });
+
+    });
+</script>
+
+</body>
+</html>

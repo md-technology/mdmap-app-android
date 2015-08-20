@@ -1,0 +1,117 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import"
+      href="../../bower_components/neon-animation/animations/slide-from-right-animation.html">
+<link rel="import" href="../../bower_components/neon-animation/animations/fade-out-animation.html">
+
+<dom-module id="photo-dialog">
+    <style>
+        :host {
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+        }
+
+        #photoDialog {
+            position: absolute;
+            max-height: initial;
+            max-width: initial;
+            left: 0;
+            top: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #dialogContent {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #dialogContent #photoContainer {
+            position: relative;
+        }
+
+        #photoContainer iron-image {
+            background-color: lightgray;
+        }
+        #photoContainer #photoLoading {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -14px;
+            margin-top: -14px;
+            z-index: 1;
+        }
+
+    </style>
+    <template>
+        <paper-dialog id="photoDialog"
+                      entry-animation="slide-from-right-animation"
+                      exit-animation="fade-out-animation"
+                      on-iron-overlay-closed="_onClosed">
+            <div class="vertical layout" id="dialogContent">
+                <paper-toolbar>
+                    <div>{{photo.title}}</div>
+                </paper-toolbar>
+                <div id="photoContainer" class="flex">
+                    <!--  active="[[loading]]" -->
+                    <paper-spinner id="photoLoading" active="[[!photo]]"></paper-spinner>
+                    <iron-image id="photoImage" sizing="contain" preload fade
+                                src$="{{computePhotoSrc(photo)}}"
+                                class="fit"></iron-image>
+                </div>
+                <!--<paper-dialog-scrollable class="flex">
+                    <content></content>
+                </paper-dialog-scrollable>-->
+                <div class="buttons">
+                    <paper-icon-button icon="close" dialog-dismiss></paper-icon-button>
+                    <paper-icon-button icon="social:plus-one" dialog-confirm></paper-icon-button>
+                </div>
+            </div>
+        </paper-dialog>
+    </template>
+</dom-module>
+<script>
+    (function () {
+        Polymer({
+            is: 'photo-dialog',
+            properties: {
+                photo: {
+                    type: Object
+                },
+                opened: {
+                    type: Boolean,
+                    value: false,
+                    observer: '_openedChanged'
+                }
+            },
+
+            ready: function() {
+//                this.$.photoDialog.open();
+            },
+
+            open: function () {
+                return this.$.photoDialog.open();
+            },
+
+            _openedChanged: function(newValue, oldValue) {
+                if(newValue && !oldValue) {
+                    this.open();
+                }
+            },
+
+            computePhotoSrc: function (photo) {
+                var src = '';
+                if (photo) {
+                    src = 'http://static.photoshows.cn/' + photo.ossKey + '@!photo-preview-lg';
+                }
+                return src;
+            },
+
+            _onClosed: function () {
+                this.fire('photoDialogClosed');
+            }
+        });
+    })();
+</script>

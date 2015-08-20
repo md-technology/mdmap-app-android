@@ -88,11 +88,11 @@
                         for(var j in photos) {
                             if(photos[j].id == id) {
                                 exist = true;
+                                break;
                             }
                         }
                         if(!exist) {
                             self.hideLayer(id);
-                            delete self.markerIds[id];
                         }
                     }
 
@@ -101,6 +101,7 @@
                         for(var id in self.markerIds) {
                             if(photos[i].id == id) {
                                 exist = true;
+                                break;
                             }
                         }
                         if(!exist) {
@@ -117,12 +118,10 @@
         createMarker: function (photo) {
             var self = this;
             var marker = self._layers[photo.id];
-            if (marker) {
-                //self.addLayer(label);
-            } else {
-
+            if (!marker) {
                 var myIcon = L.divIcon({
                     className: 'icon-marker',
+                    iconSize: L.point(40, 40),
                     html: '<img src="' + self.getIconUrl(photo.oss_key) + '">'
                 });
 
@@ -131,7 +130,9 @@
                 marker = L.marker([photo.location.position[1], photo.location.position[0]],
                     markerStyle);
 
-                marker.photoId = photo.id;
+                marker.photo = photo;
+                self.addLayer(marker);
+
                 if (self._opts.clickable) {
                     marker.on('click',
                         function (e) {
@@ -141,15 +142,17 @@
                                     .openOn(map);
                             } else {
                                 self.fire('data_clicked', {originEvent: e,
-                                    photo: {id: this.photoId}});
+                                    photo: this.photo});
                             }
                         });
                 }
                 //map.entities.push(label);
                 self._layers[photo.id] = marker;
 
+            }else {
+                this._map.addLayer(marker);
             }
-            self.addLayer(marker);
+
         },
         trigger: function() {
             var self = this;
@@ -166,12 +169,13 @@
             var layer = this._layers[photoId];
             if (layer) {
                 this.removeLayer(layer);
+                delete this._layers[photoId];
             }
+            delete this.markerIds[photoId];
         },
         _readData: function () {
             return {
                 then: function () {
-
                 }
             };
         },

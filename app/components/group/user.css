@@ -1,0 +1,13 @@
+.avatar {
+    width: 50px;
+    height: 50px;
+    background-color: lightgray;
+}
+
+paper-toolbar.tall {
+    background-color: transparent;
+}
+
+paper-toolbar.tall paper-fab.bottom {
+    bottom: -25px;
+}

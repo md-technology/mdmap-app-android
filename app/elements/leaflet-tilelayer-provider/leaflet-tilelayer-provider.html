@@ -1,0 +1,45 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<script type="text/javascript" src="./leaflet-providers.js"></script>
+<script type="text/javascript" src="./shared.js"></script>
+<script type="text/javascript" src="./MapLayersManager.js"></script>
+
+<dom-module id="leaflet-tilelayer-provider">
+    <template>
+    </template>
+</dom-module>
+<script>
+    (function () {
+        var L = window.L || {};
+
+        Polymer({
+            is: 'leaflet-tilelayer-provider',
+
+            properties: {
+                map: {
+                    type: Object,
+                    observer: '_mapChanged'
+                },
+                container: {
+                    type: Object,
+                    observer: '_containerChanged'
+                }
+            },
+
+            _mapChanged: function() {
+                if(this.map) {
+                    this.controlLayers.addMap(this.map);
+                }
+            },
+
+            _containerChanged: function() {
+                if (this.container) {
+                    var controlLayers = L.control.layersManager({},{},{position: '',
+                        autoZIndex: false});
+                    controlLayers.addTo(this.container);
+                    this.controlLayers = controlLayers;
+                }
+            }
+        });
+    })();
+</script>

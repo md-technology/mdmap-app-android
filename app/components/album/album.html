@@ -1,0 +1,17 @@
+<style>@import "album.css";</style>
+
+<leaflet-map no-zoom-control max-zoom="18">
+    <!-- 预设置地图地图为空 -->
+    <leaflet-tilelayer></leaflet-tilelayer>
+    <!-- 地图底图供应商 -->
+    <leaflet-tilelayer-provider [map]="album.map"></leaflet-tilelayer-provider>
+    <!-- 专辑地图 -->
+    <leaflet-album-map [album]="album" (click)="onPhotoClick($event)"></leaflet-album-map>
+    <!--<leaflet-marker-cluster-group [markers]="album.photos"></leaflet-marker-cluster-group>-->
+</leaflet-map>
+<paper-fab icon="add" (click)="onFab()"></paper-fab>
+<paper-toolbar id="mapsToolbar">
+    <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+    <div class="flex">{{album.name}}</div>
+    <paper-icon-button icon="search"></paper-icon-button>
+</paper-toolbar>

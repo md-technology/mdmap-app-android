@@ -1,0 +1,73 @@
+<style is="custom-style">
+
+    body /deep/ leaflet-map::shadow .leaflet-cluster-anim .leaflet-marker-icon,
+    body /deep/ leaflet-map::shadow .leaflet-cluster-anim .leaflet-marker-shadow {
+        -webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;
+        -moz-transition: -moz-transform 0.3s ease-out, opacity 0.3s ease-in;
+        -o-transition: -o-transform 0.3s ease-out, opacity 0.3s ease-in;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-in;
+    }
+
+    body /deep/ leaflet-map::shadow .marker-cluster-small {
+        background-color: rgba(181, 226, 140, 0.6);
+    }
+    body /deep/ leaflet-map::shadow .marker-cluster-small div {
+        background-color: rgba(110, 204, 57, 0.6);
+    }
+
+    body /deep/ leaflet-map::shadow .marker-cluster-medium {
+        background-color: rgba(241, 211, 87, 0.6);
+    }
+    body /deep/ leaflet-map::shadow .marker-cluster-medium div {
+        background-color: rgba(240, 194, 12, 0.6);
+    }
+
+    body /deep/ leaflet-map::shadow .marker-cluster-large {
+        background-color: rgba(253, 156, 115, 0.6);
+    }
+    body /deep/ leaflet-map::shadow .marker-cluster-large div {
+        background-color: rgba(241, 128, 23, 0.6);
+    }
+
+    /* IE 6-8 fallback colors */
+    body /deep/ leaflet-map::shadow .leaflet-oldie .marker-cluster-small {
+        background-color: rgb(181, 226, 140);
+    }
+    body /deep/ leaflet-map::shadow .leaflet-oldie .marker-cluster-small div {
+        background-color: rgb(110, 204, 57);
+    }
+
+    body /deep/ leaflet-map::shadow .leaflet-oldie .marker-cluster-medium {
+        background-color: rgb(241, 211, 87);
+    }
+    body /deep/ leaflet-map::shadow .leaflet-oldie .marker-cluster-medium div {
+        background-color: rgb(240, 194, 12);
+    }
+
+    body /deep/ leaflet-map::shadow .leaflet-oldie .marker-cluster-large {
+        background-color: rgb(253, 156, 115);
+    }
+    body /deep/ leaflet-map::shadow .leaflet-oldie .marker-cluster-large div {
+        background-color: rgb(241, 128, 23);
+    }
+
+    body /deep/ leaflet-map::shadow .marker-cluster {
+        background-clip: padding-box;
+        border-radius: 20px;
+    }
+    body /deep/ leaflet-map::shadow .marker-cluster div {
+        width: 30px;
+        height: 30px;
+        margin-left: 5px;
+        margin-top: 5px;
+
+        text-align: center;
+        border-radius: 15px;
+        font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    }
+    body /deep/ leaflet-map::shadow .marker-cluster span {
+        line-height: 30px;
+    }
+
+
+</style>

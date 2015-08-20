@@ -4,8 +4,10 @@
 import {ComponentAnnotation as Component,
         ViewAnnotation as View,
         ElementRef,
+        Inject,
         NgFor, NgIf} from 'angular2/angular2';
 import { LeafletPanoramio } from './leaflet-panoramio/leaflet-panoramio';
+import { MessageService } from 'services/MessageService';
 
 @Component({
     selector: 'maps'
@@ -16,13 +18,29 @@ import { LeafletPanoramio } from './leaflet-panoramio/leaflet-panoramio';
 })
 export class Maps {
     elementRef: ElementRef;
-    constructor(elementRef: ElementRef) {
+    message: MessageService;
+    constructor(elementRef: ElementRef, @Inject(MessageService) message) {
         this.elementRef = elementRef;
+        this.message = message;
     }
 
     onFab() {
-        var el = this.elementRef.nativeElement;
-        var lp = el.querySelector("leaflet-panoramio");
-        lp.showContainer();
+        console.log('fab clicked');
+    }
+
+    onPhotoClick(photo) {
+        //console.log('[maps] photo clicked');
+        this.message.photo.next(photo);
+    }
+
+    onMarkerClick(e) {
+        console.log('[maps] test marker clicked');
+        console.log(e);
+    }
+
+    onMapClicked(e, o) {
+        console.log('[maps] test map clicked');
+        console.log(e);
+        console.log(o);
     }
 }

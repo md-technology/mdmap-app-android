@@ -1,0 +1,27 @@
+<!--<paper-scroll-header-panel class="flex fullbleed layout vertical">
+    <paper-toolbar>
+        <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+        <div class="title">设置</div>
+        <paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button>
+    </paper-toolbar>
+    <div>
+        用户设置
+    </div>
+</paper-scroll-header-panel>-->
+
+<paper-toolbar>
+    <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+    <div class="title">设置</div>
+    <paper-icon-button icon="more-vert" (tap)="moreAction()"></paper-icon-button>
+    <paper-menu-button>
+        <paper-icon-button icon="more-vert" class="dropdown-trigger"></paper-icon-button>
+        <paper-menu class="dropdown-content">
+            <paper-item>Share</paper-item>
+            <paper-item>Settings</paper-item>
+            <paper-item>Help</paper-item>
+        </paper-menu>
+    </paper-menu-button>
+</paper-toolbar>
+<div>
+    用户设置
+</div>

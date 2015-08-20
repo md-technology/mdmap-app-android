@@ -1,0 +1,82 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../leaflet-photo-marker/leaflet-photo-marker.html">
+<link rel="import" href="../leaflet-marker-cluster-group/leaflet-marker-cluster-group.html">
+
+<dom-module id="leaflet-album-map">
+    <template>
+    </template>
+</dom-module>
+<script>
+    (function () {
+        var L = window.L || {};
+
+        Polymer({
+            is: 'leaflet-album-map',
+
+            properties: {
+                album: {
+                    type: Object,
+                    observer: '_albumChanged'
+                },
+                container: {
+                    type: Object,
+                    observer: '_containerChanged'
+                }
+            },
+
+            _albumChanged: function(/*oldVal, newVal*/) {
+                // TODO simple to clear
+                this._clusterGroup.clearLayers();
+//                if(!newVal || !newVal.photos || !newVal.photos.length) {
+//                    this._clusterGroup.clearLayers();
+//                }else {
+//                }
+                if(this.album.photos) {
+                    for(var i in this.album.photos ) {
+                        var photo = this.album.photos[i];
+                        if(photo.location && photo.location.position) {
+                            this.addMarker(this._createMarker(photo));
+                        }
+                    }
+                }
+            },
+
+            _containerChanged: function() {
+                if (this.container) {
+                    this.container.addLayer(this._clusterGroup);
+                }
+            },
+
+            addMarker: function(marker) {
+                this._clusterGroup.addLayer(marker);
+            },
+
+            _createMarker: function(photo) {
+                var newElement = document.createElement('div');
+                newElement.className = 'icon-marker';
+                var img = document.createElement('img');
+                img.setAttribute('src', photo.ossKey);
+                img.setAttribute('class', 'leaflet-photo-marker-icon');
+                newElement.appendChild(img);
+                newElement.addEventListener('click', this.onMarkerClick.bind(this));
+                newElement.photo = photo;
+
+                var marker = L.photoMarker(photo, newElement);
+                return marker;
+            },
+
+            onMarkerClick: function(e) {
+                if(e.target && e.target.parentElement && e.target.parentElement.photo) {
+                    this.fire('click', e.target.parentElement.photo);
+                }
+            },
+
+            ready: function() {
+                this._clusterGroup = L.markerClusterGroup();
+//                this._clusterGroup.on('click', function (a) {
+//                    that.fire('click', a.layer.photo);
+//                });
+            }
+        });
+    })();
+</script>

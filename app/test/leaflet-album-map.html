@@ -1,0 +1,2487 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>leaflet-album-map</title>
+
+    <script src="../../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <script src="../../bower_components/web-component-tester/browser.js"></script>
+    <script src="../../bower_components/test-fixture/test-fixture-mocha.js"></script>
+    <link rel="import" href="../../bower_components/test-fixture/test-fixture.html">
+
+    <!-- Step 1: import the element to test -->
+    <link rel="import" href="../../bower_components/leaflet-map/leaflet-map.html">
+    <link rel="import" href="../elements/leaflet-album-map/leaflet-album-map.html">
+
+</head>
+<body>
+
+<test-fixture id="basic">
+    <template>
+        <leaflet-map max-zoom="18">
+            <leaflet-album-map id="leaflet-album-map"></leaflet-album-map>
+        </leaflet-map>
+    </template>
+</test-fixture>
+
+<script>
+    suite('leaflet-album-map tests', function() {
+        var list, listItems, leafletAlbum;
+
+        setup(function() {
+            list = fixture('basic');
+            leafletAlbum = document.getElementById('leaflet-album-map');
+        });
+
+        test('Item lengths should be equalled', function(done) {
+            // Test a property
+            // Invalid value used as weak map key
+            leafletAlbum.album = {
+                "id": "26494332413261829485691975638",
+                "user": {
+                    "id": "26494317932567731623693957073",
+                    "name": "户外健步",
+                    "email": "outdoor-walking@foxmail.com",
+                    "description": "户外健步\n健康生活",
+                    "avatar": {
+                        "id": "26494327137493024404760213461",
+                        "commentCount": 0,
+                        "likeCount": 0,
+                        "tags": [],
+                        "width": 0,
+                        "height": 0,
+                        "type": "AVATAR",
+                        "userId": "26494317932567731623693957073",
+                        "create_date": 1436260352519,
+                        "oss_key": "cover26494327137493024404760213461.png"
+                    },
+                    "profileCover": {
+                        "id": "26536851383588474878878367864",
+                        "commentCount": 0,
+                        "likeCount": 0,
+                        "tags": [],
+                        "width": 0,
+                        "height": 0,
+                        "type": "PROFILE",
+                        "userId": "26494317932567731623693957073",
+                        "create_date": 1438565596546,
+                        "oss_key": "cover26536851383588474878878367864.png"
+                    },
+                    "mastheadCover": {
+                        "id": "26494325864667683318801151956",
+                        "commentCount": 0,
+                        "likeCount": 0,
+                        "tags": [],
+                        "width": 0,
+                        "height": 0,
+                        "type": "MASTHEAD",
+                        "userId": "26494317932567731623693957073",
+                        "create_date": 1436260283567,
+                        "oss_key": "cover26494325864667683318801151956.png"
+                    },
+                    "user": {
+                        "id": "26449692454748190120520877226",
+                        "name": "暗梅幽闻花",
+                        "email": "anypossible@foxmail.com",
+                        "website": "http://www.amywh.com",
+                        "avatar": {
+                            "id": "26494308690748950695208597448",
+                            "commentCount": 0,
+                            "likeCount": 0,
+                            "tags": [],
+                            "width": 0,
+                            "height": 0,
+                            "type": "AVATAR",
+                            "userId": "26449692454748190120520877226",
+                            "create_date": 1436259352399,
+                            "oss_key": "cover26494308690748950695208597448.png"
+                        },
+                        "profileCover": {
+                            "id": "26494309170364296611656939465",
+                            "commentCount": 0,
+                            "likeCount": 0,
+                            "tags": [],
+                            "width": 0,
+                            "height": 0,
+                            "type": "PROFILE",
+                            "userId": "26449692454748190120520877226",
+                            "create_date": 1436259378663,
+                            "oss_key": "cover26494309170364296611656939465.png"
+                        },
+                        "mastheadCover": {
+                            "id": "26494309373278481422462007242",
+                            "commentCount": 0,
+                            "likeCount": 0,
+                            "tags": [],
+                            "width": 0,
+                            "height": 0,
+                            "type": "MASTHEAD",
+                            "userId": "26449692454748190120520877226",
+                            "create_date": 1436259389866,
+                            "oss_key": "cover26494309373278481422462007242.png"
+                        },
+                        "username": "user",
+                        "first_name": "",
+                        "last_name": ""
+                    },
+                    "members": [
+                        {
+                            "id": "26449692454748190120520877226",
+                            "name": "暗梅幽闻花",
+                            "email": "anypossible@foxmail.com",
+                            "website": "http://www.amywh.com",
+                            "avatar": {
+                                "id": "26494308690748950695208597448",
+                                "commentCount": 0,
+                                "likeCount": 0,
+                                "tags": [],
+                                "width": 0,
+                                "height": 0,
+                                "type": "AVATAR",
+                                "userId": "26449692454748190120520877226",
+                                "create_date": 1436259352399,
+                                "oss_key": "cover26494308690748950695208597448.png"
+                            },
+                            "profileCover": {
+                                "id": "26494309170364296611656939465",
+                                "commentCount": 0,
+                                "likeCount": 0,
+                                "tags": [],
+                                "width": 0,
+                                "height": 0,
+                                "type": "PROFILE",
+                                "userId": "26449692454748190120520877226",
+                                "create_date": 1436259378663,
+                                "oss_key": "cover26494309170364296611656939465.png"
+                            },
+                            "mastheadCover": {
+                                "id": "26494309373278481422462007242",
+                                "commentCount": 0,
+                                "likeCount": 0,
+                                "tags": [],
+                                "width": 0,
+                                "height": 0,
+                                "type": "MASTHEAD",
+                                "userId": "26449692454748190120520877226",
+                                "create_date": 1436259389866,
+                                "oss_key": "cover26494309373278481422462007242.png"
+                            },
+                            "username": "user",
+                            "first_name": "",
+                            "last_name": ""
+                        },
+                        {
+                            "id": "26488343456437363026669757183",
+                            "name": "柳颜婷",
+                            "email": "774518973@qq.com",
+                            "username": "柳颜婷",
+                            "first_name": "",
+                            "last_name": ""
+                        }
+                    ],
+                    "username": "outdoor-walking",
+                    "first_name": "",
+                    "last_name": ""
+                },
+                "title": "泰山登山路线",
+                "description": "一些经典的泰山登山路线",
+                "commentCount": 0,
+                "likeCount": 0,
+                "tags": [],
+                "type": "FeatureCollection",
+                "name": "taishan",
+                "map": {
+                    "id": "26488265777198068635747901827",
+                    "name": "卫星地图",
+                    "baseLayer": "Esri.WorldImagery",
+                    "overLayers": {
+                        "道路": "MapQuestOpen.HybridOverlay"
+                    }
+                },
+                "photos": [
+                    {
+                        "id": "26494368550433469882703591385",
+                        "user": {
+                            "id": "26488343456437363026669757183",
+                            "name": "柳颜婷",
+                            "email": "774518973@qq.com",
+                            "username": "柳颜婷",
+                            "first_name": "",
+                            "last_name": ""
+                        },
+                        "title": "泰山层峦叠嶂",
+                        "description": "山东泰安市泰山风景区中天门看泰山的层峦叠嶂",
+                        "commentCount": 0,
+                        "likeCount": 0,
+                        "tags": [
+                            "泰山"
+                        ],
+                        "color": "#E1DDD9",
+                        "width": 1600,
+                        "height": 1067,
+                        "location": {
+                            "position": [
+                                117.10681200027466,
+                                36.23835441418248
+                            ],
+                            "alt": 0,
+                            "address": "山东省泰安市泰山区红门路45号"
+                        },
+                        "is360": false,
+                        "create_date": 1436262597175,
+                        "oss_key": "26494368550433469882703591385.JPG",
+                        "file_name": "NG7A1920.JPG",
+                        "file_type": "JPG",
+                        "file_size": 150456
+                    },
+                    {
+                        "id": "26494370284427412811401443301",
+                        "user": {
+                            "id": "26488343456437363026669757183",
+                            "name": "柳颜婷",
+                            "email": "774518973@qq.com",
+                            "username": "柳颜婷",
+                            "first_name": "",
+                            "last_name": ""
+                        },
+                        "title": "五岳独尊",
+                        "description": "山东省泰安市 \n中国泰山世界地质公园\n五岳独尊字碑",
+                        "commentCount": 0,
+                        "likeCount": 0,
+                        "tags": [
+                            "泰山"
+                        ],
+                        "color": "#989390",
+                        "width": 1067,
+                        "height": 1600,
+                        "location": {
+                            "position": [
+                                117.10350751876831,
+                                36.25643813952439
+                            ],
+                            "alt": 0,
+                            "address": "山东省泰安市 中国泰山世界地质公园 玉皇顶"
+                        },
+                        "is360": false,
+                        "create_date": 1436262691909,
+                        "oss_key": "26494370284427412811401443301.JPG",
+                        "file_name": "NG7A1889.JPG",
+                        "file_type": "JPG",
+                        "file_size": 552798
+                    },
+                    {
+                        "id": "26494370911616711317526198256",
+                        "user": {
+                            "id": "26488343456437363026669757183",
+                            "name": "柳颜婷",
+                            "email": "774518973@qq.com",
+                            "username": "柳颜婷",
+                            "first_name": "",
+                            "last_name": ""
+                        },
+                        "title": "南天门",
+                        "description": "南天门",
+                        "commentCount": 0,
+                        "likeCount": 0,
+                        "tags": [
+                            "南天门"
+                        ],
+                        "color": "#D0C8C7",
+                        "width": 1600,
+                        "height": 1067,
+                        "location": {
+                            "position": [
+                                117.09842205047607,
+                                36.25559028801839
+                            ],
+                            "alt": 0,
+                            "address": "山东省泰安市岱岳区红门路45号"
+                        },
+                        "is360": false,
+                        "create_date": 1436262725101,
+                        "oss_key": "26494370911616711317526198256.JPG",
+                        "file_name": "NG7A1857.JPG",
+                        "file_type": "JPG",
+                        "file_size": 246352
+                    },
+                    {
+                        "id": "26494371778613682781875124219",
+                        "user": {
+                            "id": "26488343456437363026669757183",
+                            "name": "柳颜婷",
+                            "email": "774518973@qq.com",
+                            "username": "柳颜婷",
+                            "first_name": "",
+                            "last_name": ""
+                        },
+                        "title": "路边赏花",
+                        "description": "山东省泰安市中国泰山世界地质公园 南天门",
+                        "commentCount": 0,
+                        "likeCount": 0,
+                        "tags": [],
+                        "color": "#3A3C32",
+                        "width": 1067,
+                        "height": 1600,
+                        "location": {
+                            "position": [
+                                117.10455894470215,
+                                36.247388147425696
+                            ],
+                            "alt": 0,
+                            "address": "山东省泰安市泰山区红门路45号"
+                        },
+                        "is360": false,
+                        "create_date": 1436262772104,
+                        "oss_key": "26494371778613682781875124219.JPG",
+                        "file_name": "NG7A1826.JPG",
+                        "file_type": "JPG",
+                        "file_size": 436871
+                    },
+                    {
+                        "id": "26494372018421355740099295239",
+                        "user": {
+                            "id": "26488343456437363026669757183",
+                            "name": "柳颜婷",
+                            "email": "774518973@qq.com",
+                            "username": "柳颜婷",
+                            "first_name": "",
+                            "last_name": ""
+                        },
+                        "title": "路边花",
+                        "description": "山东省泰安市中国泰山世界地质公园",
+                        "commentCount": 0,
+                        "likeCount": 0,
+                        "tags": [],
+                        "color": "#65664F",
+                        "width": 1600,
+                        "height": 1067,
+                        "location": {
+                            "position": [
+                                117.1070909500122,
+                                36.24475774281345
+                            ],
+                            "alt": 0,
+                            "address": "山东省泰安市泰山区红门路45号"
+                        },
+                        "is360": false,
+                        "create_date": 1436262785835,
+                        "oss_key": "26494372018421355740099295239.JPG",
+                        "file_name": "NG7A1818.JPG",
+                        "file_type": "JPG",
+                        "file_size": 213895
+                    },
+                    {
+                        "id": "26494372553376933877676292115",
+                        "user": {
+                            "id": "26488343456437363026669757183",
+                            "name": "柳颜婷",
+                            "email": "774518973@qq.com",
+                            "username": "柳颜婷",
+                            "first_name": "",
+                            "last_name": ""
+                        },
+                        "title": "望顶",
+                        "description": "山东省泰安市中国泰山世界地质公园 南天门望泰山顶",
+                        "commentCount": 0,
+                        "likeCount": 0,
+                        "tags": [],
+                        "color": "#6A714B",
+                        "width": 1600,
+                        "height": 1067,
+                        "location": {
+                            "position": [
+                                117.10833549499512,
+                                36.24160806293153
+                            ],
+                            "alt": 0,
+                            "address": "山东省泰安市泰山区红门路45号"
+                        },
+                        "is360": false,
+                        "create_date": 1436262814860,
+                        "oss_key": "26494372553376933877676292115.JPG",
+                        "file_name": "NG7A1792.JPG",
+                        "file_type": "JPG",
+                        "file_size": 472272
+                    },
+                    {
+                        "id": "26494372977652047572995979284",
+                        "user": {
+                            "id": "26488343456437363026669757183",
+                            "name": "柳颜婷",
+                            "email": "774518973@qq.com",
+                            "username": "柳颜婷",
+                            "first_name": "",
+                            "last_name": ""
+                        },
+                        "title": "庙宇",
+                        "description": "山东省泰安市中国泰山世界地质公园 庙宇",
+                        "commentCount": 0,
+                        "likeCount": 0,
+                        "tags": [],
+                        "color": "#CB957C",
+                        "width": 1600,
+                        "height": 1067,
+                        "location": {
+                            "position": [
+                                117.11734771728517,
+                                36.221010874392356
+                            ],
+                            "alt": 0,
+                            "address": "山东省泰安市泰山区红门路45号"
+                        },
+                        "is360": false,
+                        "create_date": 1436262837275,
+                        "oss_key": "26494372977652047572995979284.JPG",
+                        "file_name": "NG7A1775.JPG",
+                        "file_type": "JPG",
+                        "file_size": 394772
+                    }
+                ],
+                "featureCollection": {
+                    "type": "FeatureCollection",
+                    "properties": {
+                        "style": "{\"dashArray\":5,\"weight\":4,\"color\":\"rgb(255,87,34)\",\"opacity\":0.8}"
+                    },
+                    "features": [
+                        {
+                            "id": "26494354733822158674249431000",
+                            "properties": {
+                                "name": "2013.0419樱桃园松棚龙角峰帽檐南天门中天门红门",
+                                "style": "{}"
+                            },
+                            "type": "Feature",
+                            "geometry": {
+                                "type": "LineString",
+                                "coordinates": [
+                                    [
+                                        117.060852,
+                                        36.217583
+                                    ],
+                                    [
+                                        117.06102,
+                                        36.217842
+                                    ],
+                                    [
+                                        117.061777,
+                                        36.218422
+                                    ],
+                                    [
+                                        117.062235,
+                                        36.218962
+                                    ],
+                                    [
+                                        117.062448,
+                                        36.219032
+                                    ],
+                                    [
+                                        117.062987,
+                                        36.21941
+                                    ],
+                                    [
+                                        117.063542,
+                                        36.219977
+                                    ],
+                                    [
+                                        117.063653,
+                                        36.220005
+                                    ],
+                                    [
+                                        117.064348,
+                                        36.220802
+                                    ],
+                                    [
+                                        117.065037,
+                                        36.220872
+                                    ],
+                                    [
+                                        117.06533,
+                                        36.221017
+                                    ],
+                                    [
+                                        117.06556,
+                                        36.221043
+                                    ],
+                                    [
+                                        117.06564,
+                                        36.221215
+                                    ],
+                                    [
+                                        117.066068,
+                                        36.221215
+                                    ],
+                                    [
+                                        117.066337,
+                                        36.2214
+                                    ],
+                                    [
+                                        117.06656,
+                                        36.221378
+                                    ],
+                                    [
+                                        117.066845,
+                                        36.221522
+                                    ],
+                                    [
+                                        117.067022,
+                                        36.221765
+                                    ],
+                                    [
+                                        117.067677,
+                                        36.221855
+                                    ],
+                                    [
+                                        117.068222,
+                                        36.222215
+                                    ],
+                                    [
+                                        117.06848,
+                                        36.222515
+                                    ],
+                                    [
+                                        117.068822,
+                                        36.222613
+                                    ],
+                                    [
+                                        117.069085,
+                                        36.223113
+                                    ],
+                                    [
+                                        117.069227,
+                                        36.22313
+                                    ],
+                                    [
+                                        117.069352,
+                                        36.222978
+                                    ],
+                                    [
+                                        117.070015,
+                                        36.223503
+                                    ],
+                                    [
+                                        117.070155,
+                                        36.223757
+                                    ],
+                                    [
+                                        117.071178,
+                                        36.224182
+                                    ],
+                                    [
+                                        117.071402,
+                                        36.224188
+                                    ],
+                                    [
+                                        117.071883,
+                                        36.224433
+                                    ],
+                                    [
+                                        117.072412,
+                                        36.224583
+                                    ],
+                                    [
+                                        117.072768,
+                                        36.224602
+                                    ],
+                                    [
+                                        117.073078,
+                                        36.224873
+                                    ],
+                                    [
+                                        117.072938,
+                                        36.225023
+                                    ],
+                                    [
+                                        117.07295,
+                                        36.225398
+                                    ],
+                                    [
+                                        117.072783,
+                                        36.22553
+                                    ],
+                                    [
+                                        117.073822,
+                                        36.225962
+                                    ],
+                                    [
+                                        117.074748,
+                                        36.22608
+                                    ],
+                                    [
+                                        117.075148,
+                                        36.226332
+                                    ],
+                                    [
+                                        117.075382,
+                                        36.226377
+                                    ],
+                                    [
+                                        117.075542,
+                                        36.226517
+                                    ],
+                                    [
+                                        117.075867,
+                                        36.226625
+                                    ],
+                                    [
+                                        117.076315,
+                                        36.226902
+                                    ],
+                                    [
+                                        117.076348,
+                                        36.227
+                                    ],
+                                    [
+                                        117.075815,
+                                        36.226833
+                                    ],
+                                    [
+                                        117.075963,
+                                        36.227087
+                                    ],
+                                    [
+                                        117.075888,
+                                        36.227163
+                                    ],
+                                    [
+                                        117.07567,
+                                        36.227137
+                                    ],
+                                    [
+                                        117.0756,
+                                        36.227062
+                                    ],
+                                    [
+                                        117.075447,
+                                        36.227417
+                                    ],
+                                    [
+                                        117.075667,
+                                        36.227618
+                                    ],
+                                    [
+                                        117.075732,
+                                        36.227903
+                                    ],
+                                    [
+                                        117.07562,
+                                        36.22793
+                                    ],
+                                    [
+                                        117.07566,
+                                        36.228108
+                                    ],
+                                    [
+                                        117.075993,
+                                        36.228043
+                                    ],
+                                    [
+                                        117.076023,
+                                        36.227908
+                                    ],
+                                    [
+                                        117.075592,
+                                        36.228218
+                                    ],
+                                    [
+                                        117.075357,
+                                        36.228213
+                                    ],
+                                    [
+                                        117.075292,
+                                        36.228128
+                                    ],
+                                    [
+                                        117.075178,
+                                        36.228155
+                                    ],
+                                    [
+                                        117.07523,
+                                        36.228338
+                                    ],
+                                    [
+                                        117.075543,
+                                        36.22846
+                                    ],
+                                    [
+                                        117.076363,
+                                        36.22858
+                                    ],
+                                    [
+                                        117.076453,
+                                        36.228517
+                                    ],
+                                    [
+                                        117.076575,
+                                        36.228022
+                                    ],
+                                    [
+                                        117.076497,
+                                        36.227945
+                                    ],
+                                    [
+                                        117.076277,
+                                        36.228152
+                                    ],
+                                    [
+                                        117.076442,
+                                        36.228017
+                                    ],
+                                    [
+                                        117.077583,
+                                        36.228228
+                                    ],
+                                    [
+                                        117.077495,
+                                        36.228172
+                                    ],
+                                    [
+                                        117.07726,
+                                        36.228212
+                                    ],
+                                    [
+                                        117.076955,
+                                        36.228157
+                                    ],
+                                    [
+                                        117.076745,
+                                        36.22806
+                                    ],
+                                    [
+                                        117.076822,
+                                        36.228352
+                                    ],
+                                    [
+                                        117.077107,
+                                        36.228513
+                                    ],
+                                    [
+                                        117.077273,
+                                        36.228753
+                                    ],
+                                    [
+                                        117.076752,
+                                        36.228997
+                                    ],
+                                    [
+                                        117.076752,
+                                        36.22909
+                                    ],
+                                    [
+                                        117.076567,
+                                        36.229223
+                                    ],
+                                    [
+                                        117.076302,
+                                        36.229263
+                                    ],
+                                    [
+                                        117.076408,
+                                        36.229618
+                                    ],
+                                    [
+                                        117.07634,
+                                        36.229888
+                                    ],
+                                    [
+                                        117.076802,
+                                        36.230172
+                                    ],
+                                    [
+                                        117.07686,
+                                        36.230358
+                                    ],
+                                    [
+                                        117.077548,
+                                        36.230685
+                                    ],
+                                    [
+                                        117.077657,
+                                        36.230653
+                                    ],
+                                    [
+                                        117.077885,
+                                        36.230892
+                                    ],
+                                    [
+                                        117.078,
+                                        36.230912
+                                    ],
+                                    [
+                                        117.078372,
+                                        36.231273
+                                    ],
+                                    [
+                                        117.078833,
+                                        36.231547
+                                    ],
+                                    [
+                                        117.079022,
+                                        36.23178
+                                    ],
+                                    [
+                                        117.078845,
+                                        36.231867
+                                    ],
+                                    [
+                                        117.078672,
+                                        36.232103
+                                    ],
+                                    [
+                                        117.078758,
+                                        36.23261
+                                    ],
+                                    [
+                                        117.078888,
+                                        36.232763
+                                    ],
+                                    [
+                                        117.078575,
+                                        36.233582
+                                    ],
+                                    [
+                                        117.078657,
+                                        36.23376
+                                    ],
+                                    [
+                                        117.078533,
+                                        36.234307
+                                    ],
+                                    [
+                                        117.078345,
+                                        36.234523
+                                    ],
+                                    [
+                                        117.078648,
+                                        36.234915
+                                    ],
+                                    [
+                                        117.078745,
+                                        36.23565
+                                    ],
+                                    [
+                                        117.078562,
+                                        36.236198
+                                    ],
+                                    [
+                                        117.078173,
+                                        36.236553
+                                    ],
+                                    [
+                                        117.078173,
+                                        36.236645
+                                    ],
+                                    [
+                                        117.077487,
+                                        36.236722
+                                    ],
+                                    [
+                                        117.077153,
+                                        36.236982
+                                    ],
+                                    [
+                                        117.077132,
+                                        36.237432
+                                    ],
+                                    [
+                                        117.077023,
+                                        36.237475
+                                    ],
+                                    [
+                                        117.076958,
+                                        36.237685
+                                    ],
+                                    [
+                                        117.076803,
+                                        36.23783
+                                    ],
+                                    [
+                                        117.076717,
+                                        36.238092
+                                    ],
+                                    [
+                                        117.0772,
+                                        36.238372
+                                    ],
+                                    [
+                                        117.07734,
+                                        36.238622
+                                    ],
+                                    [
+                                        117.077852,
+                                        36.23912
+                                    ],
+                                    [
+                                        117.078185,
+                                        36.239922
+                                    ],
+                                    [
+                                        117.07803,
+                                        36.240468
+                                    ],
+                                    [
+                                        117.077935,
+                                        36.240527
+                                    ],
+                                    [
+                                        117.077932,
+                                        36.241003
+                                    ],
+                                    [
+                                        117.07804,
+                                        36.241175
+                                    ],
+                                    [
+                                        117.078152,
+                                        36.24118
+                                    ],
+                                    [
+                                        117.07842,
+                                        36.241683
+                                    ],
+                                    [
+                                        117.078668,
+                                        36.241883
+                                    ],
+                                    [
+                                        117.078707,
+                                        36.242065
+                                    ],
+                                    [
+                                        117.078427,
+                                        36.242438
+                                    ],
+                                    [
+                                        117.078017,
+                                        36.242575
+                                    ],
+                                    [
+                                        117.078398,
+                                        36.24276
+                                    ],
+                                    [
+                                        117.078972,
+                                        36.242782
+                                    ],
+                                    [
+                                        117.079238,
+                                        36.243072
+                                    ],
+                                    [
+                                        117.079512,
+                                        36.243233
+                                    ],
+                                    [
+                                        117.079532,
+                                        36.243348
+                                    ],
+                                    [
+                                        117.080073,
+                                        36.243727
+                                    ],
+                                    [
+                                        117.080073,
+                                        36.244408
+                                    ],
+                                    [
+                                        117.079962,
+                                        36.244387
+                                    ],
+                                    [
+                                        117.08043,
+                                        36.244532
+                                    ],
+                                    [
+                                        117.080713,
+                                        36.24439
+                                    ],
+                                    [
+                                        117.080968,
+                                        36.244648
+                                    ],
+                                    [
+                                        117.081193,
+                                        36.245077
+                                    ],
+                                    [
+                                        117.081085,
+                                        36.245055
+                                    ],
+                                    [
+                                        117.08118,
+                                        36.245117
+                                    ],
+                                    [
+                                        117.081157,
+                                        36.245027
+                                    ],
+                                    [
+                                        117.08122,
+                                        36.245168
+                                    ],
+                                    [
+                                        117.081125,
+                                        36.245028
+                                    ],
+                                    [
+                                        117.08123,
+                                        36.245058
+                                    ],
+                                    [
+                                        117.081155,
+                                        36.245155
+                                    ],
+                                    [
+                                        117.08126,
+                                        36.245112
+                                    ],
+                                    [
+                                        117.081052,
+                                        36.244913
+                                    ],
+                                    [
+                                        117.08113,
+                                        36.245107
+                                    ],
+                                    [
+                                        117.081068,
+                                        36.244923
+                                    ],
+                                    [
+                                        117.081183,
+                                        36.245127
+                                    ],
+                                    [
+                                        117.081085,
+                                        36.245082
+                                    ],
+                                    [
+                                        117.081193,
+                                        36.245107
+                                    ],
+                                    [
+                                        117.081107,
+                                        36.245042
+                                    ],
+                                    [
+                                        117.081148,
+                                        36.245127
+                                    ],
+                                    [
+                                        117.0812,
+                                        36.245042
+                                    ],
+                                    [
+                                        117.081238,
+                                        36.245127
+                                    ],
+                                    [
+                                        117.081142,
+                                        36.245082
+                                    ],
+                                    [
+                                        117.081138,
+                                        36.244982
+                                    ],
+                                    [
+                                        117.081178,
+                                        36.24507
+                                    ],
+                                    [
+                                        117.081105,
+                                        36.24507
+                                    ],
+                                    [
+                                        117.081117,
+                                        36.244973
+                                    ],
+                                    [
+                                        117.081135,
+                                        36.245067
+                                    ],
+                                    [
+                                        117.080972,
+                                        36.244915
+                                    ],
+                                    [
+                                        117.081098,
+                                        36.244968
+                                    ],
+                                    [
+                                        117.081173,
+                                        36.245188
+                                    ],
+                                    [
+                                        117.081052,
+                                        36.245025
+                                    ],
+                                    [
+                                        117.08107,
+                                        36.245115
+                                    ],
+                                    [
+                                        117.081102,
+                                        36.245023
+                                    ],
+                                    [
+                                        117.081158,
+                                        36.245118
+                                    ],
+                                    [
+                                        117.081083,
+                                        36.24505
+                                    ],
+                                    [
+                                        117.081155,
+                                        36.245122
+                                    ],
+                                    [
+                                        117.081113,
+                                        36.245037
+                                    ],
+                                    [
+                                        117.081227,
+                                        36.245088
+                                    ],
+                                    [
+                                        117.081182,
+                                        36.244998
+                                    ],
+                                    [
+                                        117.081047,
+                                        36.245022
+                                    ],
+                                    [
+                                        117.081065,
+                                        36.245135
+                                    ],
+                                    [
+                                        117.080983,
+                                        36.245067
+                                    ],
+                                    [
+                                        117.081263,
+                                        36.245473
+                                    ],
+                                    [
+                                        117.081077,
+                                        36.245722
+                                    ],
+                                    [
+                                        117.08119,
+                                        36.245742
+                                    ],
+                                    [
+                                        117.08126,
+                                        36.245647
+                                    ],
+                                    [
+                                        117.081593,
+                                        36.24589
+                                    ],
+                                    [
+                                        117.081642,
+                                        36.245802
+                                    ],
+                                    [
+                                        117.081953,
+                                        36.246
+                                    ],
+                                    [
+                                        117.08195,
+                                        36.246237
+                                    ],
+                                    [
+                                        117.082333,
+                                        36.246032
+                                    ],
+                                    [
+                                        117.08259,
+                                        36.246253
+                                    ],
+                                    [
+                                        117.082705,
+                                        36.246245
+                                    ],
+                                    [
+                                        117.082673,
+                                        36.246358
+                                    ],
+                                    [
+                                        117.082913,
+                                        36.246347
+                                    ],
+                                    [
+                                        117.08289,
+                                        36.246438
+                                    ],
+                                    [
+                                        117.08278,
+                                        36.246423
+                                    ],
+                                    [
+                                        117.083065,
+                                        36.246873
+                                    ],
+                                    [
+                                        117.082965,
+                                        36.24683
+                                    ],
+                                    [
+                                        117.083013,
+                                        36.247017
+                                    ],
+                                    [
+                                        117.083257,
+                                        36.247113
+                                    ],
+                                    [
+                                        117.083257,
+                                        36.247243
+                                    ],
+                                    [
+                                        117.083357,
+                                        36.247287
+                                    ],
+                                    [
+                                        117.083375,
+                                        36.247088
+                                    ],
+                                    [
+                                        117.083315,
+                                        36.247183
+                                    ],
+                                    [
+                                        117.08341,
+                                        36.247363
+                                    ],
+                                    [
+                                        117.083317,
+                                        36.247145
+                                    ],
+                                    [
+                                        117.08336,
+                                        36.247232
+                                    ],
+                                    [
+                                        117.083615,
+                                        36.247182
+                                    ],
+                                    [
+                                        117.083928,
+                                        36.247252
+                                    ],
+                                    [
+                                        117.084107,
+                                        36.24711
+                                    ],
+                                    [
+                                        117.084217,
+                                        36.247138
+                                    ],
+                                    [
+                                        117.084393,
+                                        36.247382
+                                    ],
+                                    [
+                                        117.084617,
+                                        36.247353
+                                    ],
+                                    [
+                                        117.084737,
+                                        36.247513
+                                    ],
+                                    [
+                                        117.084422,
+                                        36.246853
+                                    ],
+                                    [
+                                        117.084527,
+                                        36.246903
+                                    ],
+                                    [
+                                        117.084293,
+                                        36.246568
+                                    ],
+                                    [
+                                        117.08467,
+                                        36.247452
+                                    ],
+                                    [
+                                        117.08453,
+                                        36.247293
+                                    ],
+                                    [
+                                        117.084692,
+                                        36.247433
+                                    ],
+                                    [
+                                        117.084645,
+                                        36.247347
+                                    ],
+                                    [
+                                        117.084673,
+                                        36.247452
+                                    ],
+                                    [
+                                        117.084683,
+                                        36.24735
+                                    ],
+                                    [
+                                        117.085363,
+                                        36.247557
+                                    ],
+                                    [
+                                        117.085535,
+                                        36.247682
+                                    ],
+                                    [
+                                        117.086208,
+                                        36.24755
+                                    ],
+                                    [
+                                        117.086623,
+                                        36.247615
+                                    ],
+                                    [
+                                        117.086968,
+                                        36.247517
+                                    ],
+                                    [
+                                        117.087077,
+                                        36.247552
+                                    ],
+                                    [
+                                        117.087113,
+                                        36.24746
+                                    ],
+                                    [
+                                        117.087247,
+                                        36.24744
+                                    ],
+                                    [
+                                        117.087743,
+                                        36.247932
+                                    ],
+                                    [
+                                        117.088358,
+                                        36.248212
+                                    ],
+                                    [
+                                        117.088702,
+                                        36.248237
+                                    ],
+                                    [
+                                        117.089455,
+                                        36.248493
+                                    ],
+                                    [
+                                        117.090255,
+                                        36.249002
+                                    ],
+                                    [
+                                        117.090588,
+                                        36.249043
+                                    ],
+                                    [
+                                        117.090498,
+                                        36.248963
+                                    ],
+                                    [
+                                        117.090507,
+                                        36.249057
+                                    ],
+                                    [
+                                        117.09124,
+                                        36.249515
+                                    ],
+                                    [
+                                        117.091338,
+                                        36.24947
+                                    ],
+                                    [
+                                        117.091947,
+                                        36.249697
+                                    ],
+                                    [
+                                        117.092282,
+                                        36.249943
+                                    ],
+                                    [
+                                        117.092953,
+                                        36.250165
+                                    ],
+                                    [
+                                        117.093058,
+                                        36.250128
+                                    ],
+                                    [
+                                        117.094152,
+                                        36.250632
+                                    ],
+                                    [
+                                        117.094338,
+                                        36.250478
+                                    ],
+                                    [
+                                        117.094712,
+                                        36.25063
+                                    ],
+                                    [
+                                        117.094532,
+                                        36.250448
+                                    ],
+                                    [
+                                        117.094777,
+                                        36.250637
+                                    ],
+                                    [
+                                        117.095723,
+                                        36.250213
+                                    ],
+                                    [
+                                        117.095948,
+                                        36.250283
+                                    ],
+                                    [
+                                        117.096272,
+                                        36.25024
+                                    ],
+                                    [
+                                        117.09668,
+                                        36.250423
+                                    ],
+                                    [
+                                        117.096887,
+                                        36.250762
+                                    ],
+                                    [
+                                        117.097093,
+                                        36.250853
+                                    ],
+                                    [
+                                        117.097133,
+                                        36.251123
+                                    ],
+                                    [
+                                        117.097022,
+                                        36.251288
+                                    ],
+                                    [
+                                        117.097203,
+                                        36.251902
+                                    ],
+                                    [
+                                        117.097147,
+                                        36.251823
+                                    ],
+                                    [
+                                        117.096957,
+                                        36.252553
+                                    ],
+                                    [
+                                        117.09716,
+                                        36.252662
+                                    ],
+                                    [
+                                        117.096552,
+                                        36.253965
+                                    ],
+                                    [
+                                        117.096592,
+                                        36.25405
+                                    ],
+                                    [
+                                        117.09701,
+                                        36.254132
+                                    ],
+                                    [
+                                        117.09748,
+                                        36.25453
+                                    ],
+                                    [
+                                        117.09781,
+                                        36.254613
+                                    ],
+                                    [
+                                        117.098277,
+                                        36.25456
+                                    ],
+                                    [
+                                        117.098398,
+                                        36.255435
+                                    ],
+                                    [
+                                        117.09825,
+                                        36.255583
+                                    ],
+                                    [
+                                        117.098242,
+                                        36.25577
+                                    ],
+                                    [
+                                        117.098022,
+                                        36.255728
+                                    ],
+                                    [
+                                        117.09798,
+                                        36.255642
+                                    ],
+                                    [
+                                        117.098175,
+                                        36.255753
+                                    ],
+                                    [
+                                        117.098288,
+                                        36.255947
+                                    ],
+                                    [
+                                        117.098528,
+                                        36.255758
+                                    ],
+                                    [
+                                        117.099055,
+                                        36.255538
+                                    ],
+                                    [
+                                        117.099567,
+                                        36.25515
+                                    ],
+                                    [
+                                        117.099905,
+                                        36.25515
+                                    ],
+                                    [
+                                        117.10019,
+                                        36.255322
+                                    ],
+                                    [
+                                        117.100452,
+                                        36.255143
+                                    ],
+                                    [
+                                        117.100798,
+                                        36.255127
+                                    ],
+                                    [
+                                        117.101582,
+                                        36.255265
+                                    ],
+                                    [
+                                        117.10224,
+                                        36.255135
+                                    ],
+                                    [
+                                        117.103015,
+                                        36.255192
+                                    ],
+                                    [
+                                        117.103115,
+                                        36.255137
+                                    ],
+                                    [
+                                        117.10319,
+                                        36.255205
+                                    ],
+                                    [
+                                        117.103103,
+                                        36.255135
+                                    ],
+                                    [
+                                        117.103218,
+                                        36.255252
+                                    ],
+                                    [
+                                        117.10332,
+                                        36.255203
+                                    ],
+                                    [
+                                        117.103672,
+                                        36.255307
+                                    ],
+                                    [
+                                        117.103685,
+                                        36.255582
+                                    ],
+                                    [
+                                        117.103457,
+                                        36.25594
+                                    ],
+                                    [
+                                        117.103013,
+                                        36.25603
+                                    ],
+                                    [
+                                        117.102987,
+                                        36.256408
+                                    ],
+                                    [
+                                        117.10327,
+                                        36.25659
+                                    ],
+                                    [
+                                        117.10348,
+                                        36.256547
+                                    ],
+                                    [
+                                        117.103558,
+                                        36.256615
+                                    ],
+                                    [
+                                        117.103347,
+                                        36.256885
+                                    ],
+                                    [
+                                        117.103128,
+                                        36.256963
+                                    ],
+                                    [
+                                        117.103002,
+                                        36.25713
+                                    ],
+                                    [
+                                        117.102897,
+                                        36.257093
+                                    ],
+                                    [
+                                        117.102607,
+                                        36.257175
+                                    ],
+                                    [
+                                        117.10292,
+                                        36.25707
+                                    ],
+                                    [
+                                        117.10302,
+                                        36.257122
+                                    ],
+                                    [
+                                        117.10319,
+                                        36.256877
+                                    ],
+                                    [
+                                        117.103523,
+                                        36.256633
+                                    ],
+                                    [
+                                        117.10395,
+                                        36.25648
+                                    ],
+                                    [
+                                        117.104205,
+                                        36.256483
+                                    ],
+                                    [
+                                        117.104095,
+                                        36.256437
+                                    ],
+                                    [
+                                        117.103735,
+                                        36.256508
+                                    ],
+                                    [
+                                        117.103682,
+                                        36.256427
+                                    ],
+                                    [
+                                        117.10354,
+                                        36.256473
+                                    ],
+                                    [
+                                        117.103633,
+                                        36.256423
+                                    ],
+                                    [
+                                        117.103537,
+                                        36.256478
+                                    ],
+                                    [
+                                        117.103623,
+                                        36.256417
+                                    ],
+                                    [
+                                        117.103475,
+                                        36.256552
+                                    ],
+                                    [
+                                        117.103365,
+                                        36.256533
+                                    ],
+                                    [
+                                        117.103,
+                                        36.256065
+                                    ],
+                                    [
+                                        117.103303,
+                                        36.255932
+                                    ],
+                                    [
+                                        117.103613,
+                                        36.255533
+                                    ],
+                                    [
+                                        117.10367,
+                                        36.255257
+                                    ],
+                                    [
+                                        117.102327,
+                                        36.255117
+                                    ],
+                                    [
+                                        117.10115,
+                                        36.255218
+                                    ],
+                                    [
+                                        117.100735,
+                                        36.255058
+                                    ],
+                                    [
+                                        117.100507,
+                                        36.255083
+                                    ],
+                                    [
+                                        117.10026,
+                                        36.255273
+                                    ],
+                                    [
+                                        117.099635,
+                                        36.255042
+                                    ],
+                                    [
+                                        117.099153,
+                                        36.255315
+                                    ],
+                                    [
+                                        117.099045,
+                                        36.255483
+                                    ],
+                                    [
+                                        117.098628,
+                                        36.255652
+                                    ],
+                                    [
+                                        117.098397,
+                                        36.25589
+                                    ],
+                                    [
+                                        117.098178,
+                                        36.25587
+                                    ],
+                                    [
+                                        117.098258,
+                                        36.255503
+                                    ],
+                                    [
+                                        117.09848,
+                                        36.255413
+                                    ],
+                                    [
+                                        117.098687,
+                                        36.255682
+                                    ],
+                                    [
+                                        117.099163,
+                                        36.255143
+                                    ],
+                                    [
+                                        117.098775,
+                                        36.255157
+                                    ],
+                                    [
+                                        117.098733,
+                                        36.25507
+                                    ],
+                                    [
+                                        117.099263,
+                                        36.254598
+                                    ],
+                                    [
+                                        117.099427,
+                                        36.254153
+                                    ],
+                                    [
+                                        117.099757,
+                                        36.253895
+                                    ],
+                                    [
+                                        117.09966,
+                                        36.253943
+                                    ],
+                                    [
+                                        117.100068,
+                                        36.253075
+                                    ],
+                                    [
+                                        117.10036,
+                                        36.252763
+                                    ],
+                                    [
+                                        117.100427,
+                                        36.252458
+                                    ],
+                                    [
+                                        117.10064,
+                                        36.252535
+                                    ],
+                                    [
+                                        117.101055,
+                                        36.252217
+                                    ],
+                                    [
+                                        117.101063,
+                                        36.252038
+                                    ],
+                                    [
+                                        117.101343,
+                                        36.251852
+                                    ],
+                                    [
+                                        117.101302,
+                                        36.251652
+                                    ],
+                                    [
+                                        117.101763,
+                                        36.25113
+                                    ],
+                                    [
+                                        117.101763,
+                                        36.251038
+                                    ],
+                                    [
+                                        117.101953,
+                                        36.25095
+                                    ],
+                                    [
+                                        117.101965,
+                                        36.25086
+                                    ],
+                                    [
+                                        117.102835,
+                                        36.250123
+                                    ],
+                                    [
+                                        117.103148,
+                                        36.250205
+                                    ],
+                                    [
+                                        117.103192,
+                                        36.250307
+                                    ],
+                                    [
+                                        117.103277,
+                                        36.250242
+                                    ],
+                                    [
+                                        117.103233,
+                                        36.250055
+                                    ],
+                                    [
+                                        117.103335,
+                                        36.24987
+                                    ],
+                                    [
+                                        117.103607,
+                                        36.249707
+                                    ],
+                                    [
+                                        117.103552,
+                                        36.24924
+                                    ],
+                                    [
+                                        117.103655,
+                                        36.249078
+                                    ],
+                                    [
+                                        117.103548,
+                                        36.24879
+                                    ],
+                                    [
+                                        117.10366,
+                                        36.248618
+                                    ],
+                                    [
+                                        117.104075,
+                                        36.248815
+                                    ],
+                                    [
+                                        117.104163,
+                                        36.248682
+                                    ],
+                                    [
+                                        117.10423,
+                                        36.248078
+                                    ],
+                                    [
+                                        117.10434,
+                                        36.248112
+                                    ],
+                                    [
+                                        117.104553,
+                                        36.247882
+                                    ],
+                                    [
+                                        117.104725,
+                                        36.247322
+                                    ],
+                                    [
+                                        117.104997,
+                                        36.247153
+                                    ],
+                                    [
+                                        117.104953,
+                                        36.24707
+                                    ],
+                                    [
+                                        117.105193,
+                                        36.246448
+                                    ],
+                                    [
+                                        117.105427,
+                                        36.2464
+                                    ],
+                                    [
+                                        117.106412,
+                                        36.24679
+                                    ],
+                                    [
+                                        117.106368,
+                                        36.2465
+                                    ],
+                                    [
+                                        117.10682,
+                                        36.246217
+                                    ],
+                                    [
+                                        117.106577,
+                                        36.245928
+                                    ],
+                                    [
+                                        117.106682,
+                                        36.245865
+                                    ],
+                                    [
+                                        117.107102,
+                                        36.246057
+                                    ],
+                                    [
+                                        117.106613,
+                                        36.245515
+                                    ],
+                                    [
+                                        117.10649,
+                                        36.245472
+                                    ],
+                                    [
+                                        117.106548,
+                                        36.24501
+                                    ],
+                                    [
+                                        117.106675,
+                                        36.24474
+                                    ],
+                                    [
+                                        117.106668,
+                                        36.243973
+                                    ],
+                                    [
+                                        117.106768,
+                                        36.243925
+                                    ],
+                                    [
+                                        117.106868,
+                                        36.243647
+                                    ],
+                                    [
+                                        117.107088,
+                                        36.24358
+                                    ],
+                                    [
+                                        117.10734,
+                                        36.24363
+                                    ],
+                                    [
+                                        117.107658,
+                                        36.24355
+                                    ],
+                                    [
+                                        117.108007,
+                                        36.24329
+                                    ],
+                                    [
+                                        117.108223,
+                                        36.242627
+                                    ],
+                                    [
+                                        117.108433,
+                                        36.242397
+                                    ],
+                                    [
+                                        117.108277,
+                                        36.242048
+                                    ],
+                                    [
+                                        117.108377,
+                                        36.241978
+                                    ],
+                                    [
+                                        117.108313,
+                                        36.242347
+                                    ],
+                                    [
+                                        117.108375,
+                                        36.242265
+                                    ],
+                                    [
+                                        117.10869,
+                                        36.242382
+                                    ],
+                                    [
+                                        117.10847,
+                                        36.242478
+                                    ],
+                                    [
+                                        117.10827,
+                                        36.24238
+                                    ],
+                                    [
+                                        117.108165,
+                                        36.242433
+                                    ],
+                                    [
+                                        117.108393,
+                                        36.242348
+                                    ],
+                                    [
+                                        117.108373,
+                                        36.241875
+                                    ],
+                                    [
+                                        117.1088,
+                                        36.241717
+                                    ],
+                                    [
+                                        117.108908,
+                                        36.241765
+                                    ],
+                                    [
+                                        117.108987,
+                                        36.24169
+                                    ],
+                                    [
+                                        117.108815,
+                                        36.241113
+                                    ],
+                                    [
+                                        117.108865,
+                                        36.240925
+                                    ],
+                                    [
+                                        117.10877,
+                                        36.240873
+                                    ],
+                                    [
+                                        117.10874,
+                                        36.240692
+                                    ],
+                                    [
+                                        117.108937,
+                                        36.240587
+                                    ],
+                                    [
+                                        117.109163,
+                                        36.240645
+                                    ],
+                                    [
+                                        117.10952,
+                                        36.24041
+                                    ],
+                                    [
+                                        117.109528,
+                                        36.240313
+                                    ],
+                                    [
+                                        117.108905,
+                                        36.239705
+                                    ],
+                                    [
+                                        117.108255,
+                                        36.239327
+                                    ],
+                                    [
+                                        117.108278,
+                                        36.23898
+                                    ],
+                                    [
+                                        117.108178,
+                                        36.23889
+                                    ],
+                                    [
+                                        117.108273,
+                                        36.238972
+                                    ],
+                                    [
+                                        117.108252,
+                                        36.239072
+                                    ],
+                                    [
+                                        117.108362,
+                                        36.23903
+                                    ],
+                                    [
+                                        117.108288,
+                                        36.238958
+                                    ],
+                                    [
+                                        117.10832,
+                                        36.238778
+                                    ],
+                                    [
+                                        117.108657,
+                                        36.238748
+                                    ],
+                                    [
+                                        117.108733,
+                                        36.238673
+                                    ],
+                                    [
+                                        117.108368,
+                                        36.236812
+                                    ],
+                                    [
+                                        117.108465,
+                                        36.236748
+                                    ],
+                                    [
+                                        117.108342,
+                                        36.2359
+                                    ],
+                                    [
+                                        117.108452,
+                                        36.235873
+                                    ],
+                                    [
+                                        117.108195,
+                                        36.236005
+                                    ],
+                                    [
+                                        117.108412,
+                                        36.235982
+                                    ],
+                                    [
+                                        117.108603,
+                                        36.235865
+                                    ],
+                                    [
+                                        117.108682,
+                                        36.23559
+                                    ],
+                                    [
+                                        117.10904,
+                                        36.23544
+                                    ],
+                                    [
+                                        117.109125,
+                                        36.235273
+                                    ],
+                                    [
+                                        117.108657,
+                                        36.235312
+                                    ],
+                                    [
+                                        117.108525,
+                                        36.235055
+                                    ],
+                                    [
+                                        117.108707,
+                                        36.234818
+                                    ],
+                                    [
+                                        117.108595,
+                                        36.234808
+                                    ],
+                                    [
+                                        117.108753,
+                                        36.23456
+                                    ],
+                                    [
+                                        117.108863,
+                                        36.234545
+                                    ],
+                                    [
+                                        117.109062,
+                                        36.234325
+                                    ],
+                                    [
+                                        117.10909,
+                                        36.234048
+                                    ],
+                                    [
+                                        117.109657,
+                                        36.233563
+                                    ],
+                                    [
+                                        117.110432,
+                                        36.232605
+                                    ],
+                                    [
+                                        117.110813,
+                                        36.232377
+                                    ],
+                                    [
+                                        117.11088,
+                                        36.232093
+                                    ],
+                                    [
+                                        117.111395,
+                                        36.231135
+                                    ],
+                                    [
+                                        117.111567,
+                                        36.230992
+                                    ],
+                                    [
+                                        117.111872,
+                                        36.23047
+                                    ],
+                                    [
+                                        117.111822,
+                                        36.230387
+                                    ],
+                                    [
+                                        117.11206,
+                                        36.23018
+                                    ],
+                                    [
+                                        117.112598,
+                                        36.229233
+                                    ],
+                                    [
+                                        117.113223,
+                                        36.228677
+                                    ],
+                                    [
+                                        117.113398,
+                                        36.228422
+                                    ],
+                                    [
+                                        117.113603,
+                                        36.228323
+                                    ],
+                                    [
+                                        117.113862,
+                                        36.228005
+                                    ],
+                                    [
+                                        117.114118,
+                                        36.227272
+                                    ],
+                                    [
+                                        117.113997,
+                                        36.22713
+                                    ],
+                                    [
+                                        117.11421,
+                                        36.22688
+                                    ],
+                                    [
+                                        117.114805,
+                                        36.226612
+                                    ],
+                                    [
+                                        117.11469,
+                                        36.226073
+                                    ],
+                                    [
+                                        117.114492,
+                                        36.22597
+                                    ],
+                                    [
+                                        117.114537,
+                                        36.225703
+                                    ],
+                                    [
+                                        117.11523,
+                                        36.225067
+                                    ],
+                                    [
+                                        117.115447,
+                                        36.224715
+                                    ],
+                                    [
+                                        117.115463,
+                                        36.223872
+                                    ],
+                                    [
+                                        117.115628,
+                                        36.223625
+                                    ],
+                                    [
+                                        117.115838,
+                                        36.222887
+                                    ],
+                                    [
+                                        117.115683,
+                                        36.222352
+                                    ],
+                                    [
+                                        117.116007,
+                                        36.221853
+                                    ],
+                                    [
+                                        117.115957,
+                                        36.221677
+                                    ],
+                                    [
+                                        117.116197,
+                                        36.221063
+                                    ],
+                                    [
+                                        117.116327,
+                                        36.220973
+                                    ],
+                                    [
+                                        117.116578,
+                                        36.220012
+                                    ],
+                                    [
+                                        117.116965,
+                                        36.219218
+                                    ],
+                                    [
+                                        117.117238,
+                                        36.218918
+                                    ],
+                                    [
+                                        117.117335,
+                                        36.218362
+                                    ],
+                                    [
+                                        117.117723,
+                                        36.217663
+                                    ],
+                                    [
+                                        117.118217,
+                                        36.217257
+                                    ],
+                                    [
+                                        117.118343,
+                                        36.216698
+                                    ],
+                                    [
+                                        117.11852,
+                                        36.216462
+                                    ],
+                                    [
+                                        117.118452,
+                                        36.216193
+                                    ],
+                                    [
+                                        117.119102,
+                                        36.215055
+                                    ],
+                                    [
+                                        117.1197,
+                                        36.214772
+                                    ],
+                                    [
+                                        117.120022,
+                                        36.214498
+                                    ],
+                                    [
+                                        117.120062,
+                                        36.214035
+                                    ],
+                                    [
+                                        117.120258,
+                                        36.213802
+                                    ],
+                                    [
+                                        117.120455,
+                                        36.213178
+                                    ],
+                                    [
+                                        117.120495,
+                                        36.212703
+                                    ],
+                                    [
+                                        117.120688,
+                                        36.212355
+                                    ],
+                                    [
+                                        117.1206,
+                                        36.212187
+                                    ],
+                                    [
+                                        117.121088,
+                                        36.211657
+                                    ],
+                                    [
+                                        117.121307,
+                                        36.211223
+                                    ],
+                                    [
+                                        117.121553,
+                                        36.211015
+                                    ],
+                                    [
+                                        117.121555,
+                                        36.210923
+                                    ],
+                                    [
+                                        117.121753,
+                                        36.210755
+                                    ],
+                                    [
+                                        117.121773,
+                                        36.210473
+                                    ],
+                                    [
+                                        117.121913,
+                                        36.210323
+                                    ],
+                                    [
+                                        117.121938,
+                                        36.210137
+                                    ],
+                                    [
+                                        117.12223,
+                                        36.209732
+                                    ],
+                                    [
+                                        117.122455,
+                                        36.209193
+                                    ],
+                                    [
+                                        117.122338,
+                                        36.208932
+                                    ]
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "create_date": 1436260638104
+            };
+
+            // Data bindings will stamp out new DOM asynchronously
+            // so wait to check for updates
+            flush(function() {
+                listItems = list.querySelectorAll('.marker-cluster');
+                assert.notEqual(0, listItems.length);
+                done();
+            });
+        })
+    });
+</script>
+
+</body>
+</html>

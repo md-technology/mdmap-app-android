@@ -1,0 +1,74 @@
+<style>@import "group.css";</style>
+
+<masthead-header-panel [masthead-image]="group.mastheadCover.ossKey" *ng-if="ready">
+    <paper-toolbar class="tall" toolbar>
+        <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+        <div class="flex"></div>
+        <paper-icon-button icon="search"></paper-icon-button>
+        <paper-icon-button icon="more-vert"></paper-icon-button>
+        <div class="bottom title">{{group.name}}</div>
+
+        <paper-fab class="bottom" icon="add"></paper-fab>
+    </paper-toolbar>
+
+    <paper-material elevation="1">
+        组长 {{group.user.username}}
+    </paper-material>
+
+    <paper-material elevation="1" *ng-for="#member of group.members">
+        成员 {{member.username}}
+    </paper-material>
+
+    <paper-material elevation="1" *ng-for="#album of albums">
+        <a [router-link]="['/album', {'id': album.id}]">专辑 {{album.name}}</a>
+    </paper-material>
+</masthead-header-panel>
+<!--<paper-scroll-header-panel condenses *ng-if="ready">
+
+    <paper-toolbar class="tall">
+        <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+        <paper-icon-button icon="arrow-back"></paper-icon-button>
+        <div class="flex"></div>
+        <paper-icon-button icon="search"></paper-icon-button>
+        <paper-icon-button icon="more-vert"></paper-icon-button>
+        <div class="bottom title">{{group.name}}</div>
+    </paper-toolbar>
+
+    <div class="content">
+
+        <paper-material elevation="1">
+            {{group.user.username}}
+        </paper-material>
+
+        <paper-material elevation="1" *ng-for="#member of group.members">
+            {{member.username}}
+        </paper-material>
+
+        <div style="height: 1000px;">
+        </div>
+
+    </div>
+
+</paper-scroll-header-panel>-->
+
+<!--<paper-header-panel id="paper-header-panel" class="flex" mode="waterfall-tall" *ng-if="ready">
+    <paper-toolbar>
+        <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+        <span class="flex"></span>
+        <paper-icon-button icon="more-vert" (tap)="onMore($event)"></paper-icon-button>
+        <div class="middle title">{{group.name}}</div>
+        <div class="bottom">{{group.description}}</div>
+    </paper-toolbar>
+
+    <paper-material elevation="1">
+        {{group.user.username}}
+    </paper-material>
+
+    <paper-material elevation="1" *ng-for="#member of group.members">
+        {{member.username}}
+    </paper-material>
+
+    <div style="height: 1000px;">
+        this group is {{group.id}}
+    </div>
+</paper-header-panel>-->

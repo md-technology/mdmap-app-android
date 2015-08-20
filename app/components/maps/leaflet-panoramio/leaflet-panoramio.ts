@@ -4,6 +4,7 @@
 import {ComponentAnnotation as Component,
     ViewAnnotation as View,
     Inject,
+    EventEmitter,
     NgFor, NgIf} from 'angular2/angular2';
 import { iconsLayer } from './leaflet.IconsLayer';
 import { PanoramioApi } from 'services/Apis';
@@ -11,22 +12,22 @@ import { PanoramioApi } from 'services/Apis';
 @Component({
     selector: 'leaflet-panoramio',
     properties:['container'],
-    viewInjector: [ PanoramioApi ]
+    viewBindings: [ PanoramioApi ],
+    events: ['photoClick']
 })
 @View({
     //template: ''
     templateUrl: 'components/maps/leaflet-panoramio/leaflet-panoramio.html'
 })
 export class LeafletPanoramio {
-    _container: Object;
+    _container: {invalidateSize: Function};
     panoramioApi: PanoramioApi;
+    photoClick = new EventEmitter();
     constructor(@Inject(PanoramioApi) panoramioApi) {
         this.panoramioApi = panoramioApi;
     }
 
     set container(container) {
-        //console.log("set container");
-        //console.log(container);
         if(container) {
             this._container = container;
             var markerLayer =
@@ -51,7 +52,11 @@ export class LeafletPanoramio {
                                     reject(err);
                                 });
                     });
-                }).addTo(this._container);
+                }).on('data_clicked', evt => {
+                    this.photoClick.next(evt.photo);
+                })
+                    //.on('data_changed', evt => this.container.invalidateSize(false))
+                    .addTo(this._container);
 
             setTimeout(() => {
                 this.container.invalidateSize(false);

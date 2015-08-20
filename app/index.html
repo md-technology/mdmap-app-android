@@ -49,7 +49,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild-->
 
-  <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+  <!-- build:js bower_components/webcomponentsjs/webcomponents.js -->
   <!--<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>-->
   <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
   <!-- endbuild -->
@@ -67,7 +67,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <body unresolved class="fullbleed layout vertical">
 
-    <hello>Loading</hello>
+    <hello>
+      <div>
+        <img src="images/touch/apple-touch-icon.png">
+        加载中...
+      </div>
+    </hello>
 
 </body>
 
@@ -83,6 +88,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     //configure system loader
     System.config({defaultJSExtensions: true});
 </script>
+<!-- 3th-party libs -->
+<script src="lib/hammer.min.js"></script>
+<!-- Angular2 -->
 <script src="lib/angular2.js"></script>
 <script src="lib/router.js"></script>
 

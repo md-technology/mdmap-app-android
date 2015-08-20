@@ -1,0 +1,16 @@
+<style>@import "group.css";</style>
+<div>
+    <div *ng-for="#group of groups">
+        <paper-icon-item>
+            <a item-icon [router-link]="['/group', {'id': group.id}]">
+                <div class="avatar" ></div>
+            </a>
+            <paper-item-body two-line>
+                <div>{{group.name}}</div>
+                <div secondary>{{group.description}}</div>
+            </paper-item-body>
+        </paper-icon-item>
+    </div>
+
+    <paper-button (tap)="refresh()">刷新</paper-button>
+</div>

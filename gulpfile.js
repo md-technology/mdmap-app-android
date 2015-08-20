@@ -51,7 +51,8 @@ var PATHS = {
     'node_modules/systemjs/dist/system-csp-production.src.js',
     'node_modules/reflect-metadata/Reflect.js',
     'node_modules/angular2/node_modules/zone.js/dist/zone.js',
-    'node_modules/angular2/node_modules/zone.js/dist/long-stack-trace-zone.js'
+    'node_modules/angular2/node_modules/zone.js/dist/long-stack-trace-zone.js',
+    'bower_components/hammerjs/hammer.min.js'
   ]
 };
 
@@ -117,6 +118,9 @@ gulp.task('copy', function () {
 
   var elements = gulp.src(['app/elements/**/*.html'])
     .pipe(gulp.dest('dist/elements'));
+
+  gulp.src(['app/elements/**/*.js'])
+      .pipe(gulp.dest('dist/elements'));
 
   var swBootstrap = gulp.src(['bower_components/platinum-sw/bootstrap/*.js'])
     .pipe(gulp.dest('dist/elements/bootstrap'));

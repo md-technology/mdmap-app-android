@@ -1,7 +1,8 @@
+<style>@import "app.css";</style>
 <div>
     <!--<app-front-page foo="app-front-page foo"></app-front-page>-->
 
-    <paper-drawer-panel id="drawerPanel" (paper.responsive.change)="ironSelect()">
+    <paper-drawer-panel id="drawerPanel">
         <paper-header-panel drawer mode="waterfall-tall">
             <toolbar-profile [user]="user"></toolbar-profile>
             <!-- Drawer Content -->
@@ -18,32 +19,39 @@
                     <span>Logout</span>
                 </a>
 
-                <a [router-link]="['/signup']" (click)="toggleDrawer()">
-                    <iron-icon icon="info"></iron-icon>
-                    <span>Signup</span>
+                <a [router-link]="['/userPage']" (click)="toggleDrawer()">
+                    <iron-icon icon="social:group"></iron-icon>
+                    <span>组</span>
                 </a>
 
                 <a [router-link]="['/maps']" (click)="toggleDrawer()">
-                    <iron-icon icon="info"></iron-icon>
+                    <iron-icon icon="maps:map"></iron-icon>
                     <span>Maps</span>
+                </a>
+
+                <a [router-link]="['/settings']" (click)="toggleDrawer()">
+                    <iron-icon icon="settings"></iron-icon>
+                    <span>设置</span>
                 </a>
             </paper-menu>
 
         </paper-header-panel>
 
         <paper-header-panel main>
-            <paper-toolbar>
-                <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-                <div>Maps</div>
-            </paper-toolbar>
+            <!--<paper-toolbar>-->
+                <!--<paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>-->
+                <!--<div>Maps</div>-->
+            <!--</paper-toolbar>-->
             <router-outlet></router-outlet>
         </paper-header-panel>
     </paper-drawer-panel>
 
     <paper-toast id="message-toast"
                  duration="1000"
-                 [text]="message">
+                 [text]="messageText">
     </paper-toast>
 
     <iron-localstorage name="mdmap-storage-user" [value]="user"></iron-localstorage>
+
+    <photo-page id="photoPage" [photo-id]="photoId" [(open)]="photoOpen"></photo-page>
 </div>

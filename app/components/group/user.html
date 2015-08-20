@@ -1,0 +1,19 @@
+<style>@import "user.css";</style>
+
+<masthead-header-panel [masthead-image]="user.mastheadCover.ossKey" *ng-if="ready">
+    <paper-toolbar class="tall" toolbar>
+        <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+        <div class="flex"></div>
+        <paper-icon-button icon="search"></paper-icon-button>
+        <paper-icon-button icon="more-vert"></paper-icon-button>
+        <div class="bottom title">{{user.name}}</div>
+
+        <paper-fab class="bottom" icon="add"></paper-fab>
+    </paper-toolbar>
+
+    <paper-material elevation="1">
+        组长 {{user.username}}
+    </paper-material>
+
+    <groups [user]="user"></groups>
+</masthead-header-panel>

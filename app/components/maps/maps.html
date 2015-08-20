@@ -1,15 +1,26 @@
 <style>@import "maps.css";</style>
 
-<!-- [zoom]="zoom" [latitude]="latitude" [longitude]="longitude"-->
-<leaflet-map style="position: absolute;
-    width: 100%;
-    height: 100%;">
+<leaflet-map no-zoom-control
+        (tap)="onMapClicked($event)">
     <leaflet-geolocation enable-high-accuracy
                          set-view
                          [maximum-age]="5000"
                          [max-zoom]="16"
                          #geolocation>
     </leaflet-geolocation>
-    <leaflet-panoramio [container]="geolocation.container"></leaflet-panoramio>
+    <!--<leaflet-marker [latitude]="34" [longitude]="120" [title]="'test'" icon="myicon"
+            (click)="onMarkerClick($event)">
+        <leaflet-divicon id="myicon" classname="icon-marker">
+            <img src="http://static.photoshows.cn/144.jpg@!panor-lg">
+        </leaflet-divicon>
+        <p>This is test marker click</p>
+    </leaflet-marker>-->
+    <leaflet-panoramio [container]="geolocation.container"
+            (photo-click)="onPhotoClick($event)"></leaflet-panoramio>
 </leaflet-map>
 <paper-fab icon="add" (click)="onFab()"></paper-fab>
+<paper-toolbar id="mapsToolbar">
+    <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+    <div class="flex">Maps</div>
+    <paper-icon-button icon="search"></paper-icon-button>
+</paper-toolbar>
