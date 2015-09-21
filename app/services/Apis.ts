@@ -69,7 +69,7 @@ export class PanoramioApi extends AbstractApi {
 
 @Injectable()
 export class PhotoApi extends AbstractApi {
-    constructor(@Inject(Http) http: Http, @Inject(RequestOptions) baseRequestOptions:RequestOptions, @Inject(OauthService) oauthService:OauthService) {
+    constructor(@Inject(Http)http, @Inject(RequestOptions)baseRequestOptions, @Inject(OauthService)oauthService) {
         super(http, baseRequestOptions, oauthService, 'photo');
     }
 
@@ -96,6 +96,59 @@ export class AlbumApi extends AbstractApi {
     }
 
     album(id) {
-        return super.one(id);
+        return super.one(id)
+            .map(album=> {
+                album.featureCollection = FeatureCollection.detransform(album.featureCollection);
+                return album;
+            });
+    }
+}
+
+class FeatureCollection {
+    static tranform(featureCollection) {
+        var features = [];
+        for(var i in featureCollection.features) {
+            var feature = featureCollection.features[i];
+            var newFeature = {
+                type: feature.type,
+                properties: feature.properties||{},
+                geometry: feature.geometry
+            };
+            if(newFeature.properties.style) {
+                newFeature.properties.style = JSON.stringify(newFeature.properties.style);
+            }
+            if(feature.id) {
+                newFeature.id = feature.id;
+            }
+            features.push(newFeature);
+        }
+        var fc = {
+            type: featureCollection.type,
+            properties: featureCollection.properties || {},
+            features: features
+        };
+        if(fc.properties.style) {
+            fc.properties.style = JSON.stringify(fc.properties.style);
+        }
+        return fc;
+    }
+
+    static detransform(featureCollection) {
+        featureCollection = featureCollection || {
+                type: 'FeatureCollection',
+                properties: {style: {}},
+                features: []
+            };
+        if(featureCollection.properties.style) {
+            featureCollection.properties.style =
+                JSON.parse(featureCollection.properties.style);
+        }
+        for(var feature of featureCollection.features) {
+            if(feature.properties && feature.properties.style) {
+                feature.properties.style = JSON.parse(feature.properties.style);
+            }
+        }
+
+        return featureCollection;
     }
 }

@@ -31,24 +31,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <test-fixture id="basic">
     <template>
         <leaflet-map>
-            <leaflet-tilelayer-provider></leaflet-tilelayer-provider>
+            <leaflet-tilelayer-provider id="titleLayer"></leaflet-tilelayer-provider>
         </leaflet-map>
     </template>
 </test-fixture>
 
 <script>
     suite('leaflet-tilelayer-provider tests', function() {
-        var list, listItems;
+        var basic, tilelayer;
 
         setup(function() {
-            list = fixture('basic');
+            basic = fixture('basic');
+            tilelayer = document.querySelectorAll('#titleLayer')[0];
         });
 
         test('Item lengths should be equalled', function(done) {
             // Test a property
-            // TODO: Fix list.items.push('Foo') causing a WeakMap exception
             // Invalid value used as weak map key
-            list.map = {
+            tilelayer.map = {
                 "id": "26488265777198068635747901827",
                 "name": "卫星地图",
                 "baseLayer": "Esri.WorldImagery",

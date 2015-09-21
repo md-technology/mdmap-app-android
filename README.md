@@ -32,6 +32,28 @@ cordova build android
 adb install -r .\platforms\android\build\outputs\apk\android-armv7-debug.apk
 ``` 
 
+### rebuild
+#### pre-requisities
+``` 
+Node
+Npm
+phonegap
+cordova
+gulp
+``` 
+``` 
+cordova platform add android
+cordova plugin add cordova-plugin-crosswalk-webview
+npm install
+bower install
+add res folder to www folder
+``` 
+``` 
+gulp play
+cordova build android
+adb install -r .\platforms\android\build\outputs\apk\android-armv7-debug.apk
+``` 
+
 ## Polymer Starter Kit
 
 关闭chrome安全限制用于测试

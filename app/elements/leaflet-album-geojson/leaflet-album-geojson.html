@@ -47,14 +47,18 @@
                 layer.bindPopup(_buildPopup(feature.properties));
             },
             _geojsonChanged: function(newVal, oldVal) {
+                var that = this;
                 if(newVal) {
                     this._geoJson = L.geoJson(this.geojson, {
                         onEachFeature: this._onEachFeature,
                         style: function (feature) {
-                            return feature.properties.style;
+                            var style = that._extend({}, newVal.properties.style);
+                            style = that._extend(style, feature.properties.style);
+                            return style;
                         },
                         pointToLayer: function (feature, latlng) {
                             return L.circleMarker(latlng);
+
                         }
                     });
                     if(this.container) {
@@ -77,6 +81,15 @@
             },
 
             ready: function() {
+            },
+
+            _extend: function(destination, source) {
+                for (var i in source) {
+                    if (source.hasOwnProperty(i)) {
+                        destination[i] = source[i];
+                    }
+                }
+                return destination;
             }
         });
     })();

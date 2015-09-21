@@ -1,5 +1,5 @@
-import {ComponentAnnotation as Component,
-    ViewAnnotation as View,
+import {Component,
+    View,
     ElementRef,
     Inject,
     httpInjectables,

@@ -16,4 +16,17 @@
     </paper-material>
 
     <groups [user]="user"></groups>
+
+  <div *ng-for="#album of albums">
+    <paper-icon-item>
+      <a item-icon [router-link]="['/album', {'id': album.id}]">
+        <div class="avatar" ></div>
+      </a>
+      <paper-item-body two-line>
+        <div>{{album.name}}</div>
+        <div secondary>{{album.description}}</div>
+      </paper-item-body>
+    </paper-icon-item>
+  </div>
+
 </masthead-header-panel>

@@ -1,10 +1,14 @@
-import {ComponentAnnotation as Component,
-    ViewAnnotation as View,
+import {Component,
+    View,
     ElementRef,
     Inject,
-    httpInjectables,
     bootstrap, bind, NgFor, NgIf} from 'angular2/angular2';
-import { routerInjectables, LocationStrategy, HashLocationStrategy, RouteConfig, Redirect, RouterOutlet, RouterLink } from 'angular2/router';
+import {HTTP_BINDINGS} from 'angular2/http';
+import {ROUTER_BINDINGS, LocationStrategy, HashLocationStrategy, RouteConfig, Redirect, RouterOutlet, RouterLink } from 'angular2/router';
+
+import {reflector} from 'angular2/src/core/reflection/reflection';
+import {ReflectionCapabilities} from 'angular2/src/core/reflection/reflection_capabilities';
+
 import { Login } from 'components/login/login';
 import { Signup } from 'components/signup/signup';
 import { Groups, Group, UserPage } from 'components/group/groups';
@@ -28,7 +32,7 @@ import { MessageService } from 'services/MessageService';
 @Redirect({path: '', redirectTo: '/maps'})
 @Component({
     selector: 'hello',
-    viewBindings: [OauthService, httpInjectables]
+    viewBindings: [OauthService, HTTP_BINDINGS]
 })
 @View({
     templateUrl: 'components/app/app.html',
@@ -122,4 +126,5 @@ export class AppCache {
     }
 }
 
-bootstrap(App, [routerInjectables, MessageService, AppCache, bind(LocationStrategy).toClass(HashLocationStrategy)]);
+reflector.reflectionCapabilities = new ReflectionCapabilities();
+bootstrap(App, [ROUTER_BINDINGS, MessageService, AppCache, bind(LocationStrategy).toClass(HashLocationStrategy)]);

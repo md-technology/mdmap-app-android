@@ -1,8 +1,8 @@
 /**
  * Created by tiwen.wang on 7/26/2015.
  */
-import {ComponentAnnotation as Component,
-        ViewAnnotation as View,
+import {Component,
+        View,
         ElementRef,
         Inject,
         NgFor, NgIf} from 'angular2/angular2';

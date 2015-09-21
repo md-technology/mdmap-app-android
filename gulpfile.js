@@ -86,8 +86,8 @@ gulp.task('jshint', function () {
     ])
     .pipe(reload({stream: true, once: true}))
     .pipe($.jshint.extract()) // Extract JS from .html files
-    .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish'))
+    //.pipe($.jshint())
+    //.pipe($.jshint.reporter('jshint-stylish'))
     .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
 });
 
@@ -253,7 +253,8 @@ gulp.task('angular2', function () {
 
   var Builder = require('systemjs-builder');
   var builder = new Builder(buildConfig);
-  builder.build('angular2/router', 'dist/lib/router.js', {})
+  builder.build('angular2/router', 'dist/lib/router.js', {});
+  builder.build('angular2/http', 'dist/lib/http.js', {});
   return builder.build('angular2/angular2', 'dist/lib/angular2.js', {});
 });
 

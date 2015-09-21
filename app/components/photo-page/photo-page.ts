@@ -1,7 +1,8 @@
 /**
  * Created by tiwen.wang on 8/4/2015.
  */
-import {ComponentAnnotation as Component, ViewAnnotation as View,
+import {Component,
+    View,
     ElementRef,
     EventEmitter,
     Inject,

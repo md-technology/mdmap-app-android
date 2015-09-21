@@ -1,9 +1,13 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../leaflet-photo-marker/leaflet-photo-marker.html">
 <link rel="import" href="../leaflet-marker-cluster-group/leaflet-marker-cluster-group.html">
+<link rel="import" href="../leaflet-album-geojson/leaflet-album-geojson.html">
 
 <dom-module id="leaflet-album-map">
     <template>
+        <leaflet-album-geojson geojson="[[album.featureCollection]]"
+                container="[[container]]"
+                on-latlng-bounds-changed="onGeojsonBoundsChanged"></leaflet-album-geojson>
     </template>
 </dom-module>
 <script>
@@ -76,6 +80,17 @@
 //                this._clusterGroup.on('click', function (a) {
 //                    that.fire('click', a.layer.photo);
 //                });
+            },
+
+            onGeojsonBoundsChanged: function(e) {
+                console.log(e.detail.value);
+                if(e.detail.value) {
+                    this._fitBounds(e.detail.value);
+                }
+            },
+
+            _fitBounds: function(bounds) {
+                this.container.fitBounds(bounds);
             }
         });
     })();

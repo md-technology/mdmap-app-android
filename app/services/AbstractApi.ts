@@ -1,9 +1,8 @@
 import {Injectable, Inject, EventEmitter} from 'angular2/angular2';
 import {Http, Headers, RequestOptions, Request, URLSearchParams} from 'angular2/http';
-import {ObservableWrapper, PromiseWrapper} from 'angular2/src/facade/async';
+import {ObservableWrapper, PromiseWrapper} from 'angular2/src/core/facade/async';
 import {OauthService} from './OauthService';
 
-@Injectable()
 export class AbstractApi {
     baseUrl:string;
     http:Http;

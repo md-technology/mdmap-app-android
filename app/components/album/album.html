@@ -1,8 +1,6 @@
 <style>@import "album.css";</style>
 
-<leaflet-map no-zoom-control max-zoom="18">
-    <!-- 预设置地图地图为空 -->
-    <leaflet-tilelayer></leaflet-tilelayer>
+<leaflet-map no-tap no-zoom-control no-default-tile-layer max-zoom="18">
     <!-- 地图底图供应商 -->
     <leaflet-tilelayer-provider [map]="album.map"></leaflet-tilelayer-provider>
     <!-- 专辑地图 -->

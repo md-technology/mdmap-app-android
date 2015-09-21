@@ -1,8 +1,8 @@
 /**
  * Created by tiwen.wang on 8/11/2015.
  */
-import {ComponentAnnotation as Component,
-    ViewAnnotation as View,
+import {Component,
+    View,
     ElementRef,
     Inject,
     Ancestor,
@@ -11,7 +11,7 @@ import {
     RouterLink,
     RouteParams
 } from 'angular2/router';
-import {ObservableWrapper, PromiseWrapper} from 'angular2/src/facade/async';
+import {ObservableWrapper, PromiseWrapper} from 'angular2/src/core/facade/async';
 import { App } from '../app/app';
 import { UserApi, AlbumApi } from 'services/Apis';
 import { MessageService } from 'services/MessageService';

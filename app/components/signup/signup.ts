@@ -1,7 +1,8 @@
 /**
  * Created by tiwen.wang on 7/24/2015.
  */
-import {ComponentAnnotation as Component, ViewAnnotation as View, NgFor, NgIf} from 'angular2/angular2';
+import {Component,
+    View, NgFor, NgIf} from 'angular2/angular2';
 
 @Component({
     selector: 'signup',

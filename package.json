@@ -37,7 +37,7 @@
     "systemjs-builder": "^0.12.2"
   },
   "dependencies": {
-    "angular2": "2.0.0-alpha.34",
+    "angular2": "2.0.0-alpha.37",
     "reflect-metadata": "^0.1.0",
     "systemjs": "^0.18.4"
   },

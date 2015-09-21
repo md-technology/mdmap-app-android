@@ -1,8 +1,9 @@
 /**
  * Created by tiwen.wang on 7/28/2015.
  */
-import {Injectable, Inject, URLSearchParams, Http, httpInjectables} from 'angular2/angular2';
-import {ObservableWrapper, PromiseWrapper} from 'angular2/src/facade/async';
+import {Injectable, Inject} from 'angular2/angular2';
+import {URLSearchParams, Http, httpInjectables} from 'angular2/http';
+import {ObservableWrapper, PromiseWrapper} from 'angular2/src/core/facade/async';
 
 @Injectable()
 export class OauthService {

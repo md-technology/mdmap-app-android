@@ -2,7 +2,6 @@
 
 <script type="text/javascript" src="./leaflet-providers.js"></script>
 <script type="text/javascript" src="./shared.js"></script>
-<script type="text/javascript" src="./MapLayersManager.js"></script>
 
 <dom-module id="leaflet-tilelayer-provider">
     <template>
@@ -27,18 +26,41 @@
             },
 
             _mapChanged: function() {
-                if(this.map) {
-                    this.controlLayers.addMap(this.map);
-                }
+                this._addTitleLayer();
             },
 
             _containerChanged: function() {
-                if (this.container) {
-                    var controlLayers = L.control.layersManager({},{},{position: '',
-                        autoZIndex: false});
-                    controlLayers.addTo(this.container);
-                    this.controlLayers = controlLayers;
+                this._addTitleLayer();
+            },
+
+            _baseLayer:null,
+            _overLayers: {},
+            _addTitleLayer: function() {
+                if (this.container && this.map) {
+                    this._clear();
+                    var baseLayer = L.tileLayer.provider(this.map.baseLayer);
+                    baseLayer.addTo(this.container);
+                    this._baseLayer = baseLayer;
+                    for(var name in this.map.overLayers) {
+                        var overLayer = L.tileLayer.provider(this.map.overLayers[name]);
+                        overLayer.addTo(this.container);
+                        this._overLayers[name] = overLayer;
+                    }
                 }
+            },
+            _clear: function() {
+                if(this._baseLayer && this.container.hasLayer(this._baseLayer)) {
+                    this.container.removeLayer(this._baseLayer);
+                }
+                this._baseLayer = null;
+
+                for(var name in this._overLayers) {
+                    var overLayer = this._overLayers[name];
+                    if(overLayer && this.container.hasLayer(overLayer)) {
+                        this.container.removeLayer(overLayer);
+                    }
+                }
+                this._overLayers = {};
             }
         });
     })();
