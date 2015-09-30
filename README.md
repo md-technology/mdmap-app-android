@@ -15,9 +15,11 @@ phonegap create phonegap-polymer-app --name "polymer-app" --id "com.mdtech.app"
 cordova platform add android
 ``` 
 
-### crosswalk
+### cordova plugins
 ``` 
 cordova plugin add cordova-plugin-crosswalk-webview
+cordova plugin add cordova-plugin-geolocation
+cordova plugin add cordova-plugin-device
 ``` 
 
 ### polymer
@@ -47,6 +49,7 @@ cordova plugin add cordova-plugin-crosswalk-webview
 npm install
 bower install
 add res folder to www folder
+add <script src="./cordova.js"></script> to index.html
 ``` 
 ``` 
 gulp play
@@ -54,6 +57,14 @@ cordova build android
 adb install -r .\platforms\android\build\outputs\apk\android-armv7-debug.apk
 ``` 
 
+## debug
+[https://developer.chrome.com/devtools/docs/remote-debugging](https://developer.chrome
+.com/devtools/docs/remote-debugging)  
+
+``` 
+chrome://inspect
+``` 
+ 
 ## Polymer Starter Kit
 
 关闭chrome安全限制用于测试

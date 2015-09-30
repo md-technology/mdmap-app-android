@@ -1,0 +1,80 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="leaflet-cordova-geolocation">
+    <template>
+
+    </template>
+</dom-module>
+<script>
+    (function () {
+        Polymer({
+            is: 'leaflet-cordova-geolocation',
+
+            properties: {
+                container: {
+                    type: Object,
+                    observer: '_containerChanged'
+                },
+
+                watch: {
+                    type: Boolean,
+                    observer: '_watchChanged'
+                }
+            },
+
+            _watchID: null,
+            _watchChanged: function() {
+                if(this.watch) {
+                    console.assert(!!navigator.geolocation, 'no navigator.geolocation');
+                    this._watchID = navigator.geolocation.watchPosition(this.geolocationSuccess.bind(this),
+                            this.geolocationError.bind(this),
+                            { timeout: 5000, enableHighAccuracy: true, maximumAge: 90000});
+                }else {
+                    navigator.geolocation.clearWatch(this._watchID);
+                    this._watchID = null;
+                    this._removeMarker();
+                }
+            },
+            _userMarker: null,
+            _containerChanged: function() {
+                if (this.container) {
+//                    var options = { timeout: 30000 };
+//                    navigator.geolocation.getCurrentPosition(this.geolocationSuccess.bind(this),
+//                            this.geolocationError.bind(this),
+//                            options);
+                }
+            },
+
+            ready: function() {
+            },
+
+            geolocationSuccess: function(position) {
+                console.debug('geolocationSuccess');
+                this._addMarker(position);
+                this.container.setView(L.latLng(position.coords.latitude, position.coords.longitude));
+            },
+
+            geolocationError: function(error) {
+                alert('code: '    + error.code    + '\n' +
+                        'message: ' + error.message + '\n');
+            },
+
+            _addMarker: function(position) {
+                if(!this._userMarker) {
+                    this._userMarker = L.circleMarker(L.latLng(position.coords.latitude, position.coords.longitude));
+                }
+                var radius = position.coords.accuracy / 2;
+                this._userMarker.setRadius(radius);
+                if(!this.container.hasLayer(this._userMarker)) {
+                    this._userMarker.addTo(this.container);
+                }
+            },
+
+            _removeMarker: function() {
+                if(this.container.hasLayer(this._userMarker)) {
+                    this.container.removeLayer(this._userMarker)
+                }
+            }
+        });
+    })();
+</script>

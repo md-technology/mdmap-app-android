@@ -8,6 +8,7 @@ import {Component,
         NgFor, NgIf} from 'angular2/angular2';
 import { LeafletPanoramio } from './leaflet-panoramio/leaflet-panoramio';
 import { MessageService } from 'services/MessageService';
+import { AppCache } from '../app/app';
 
 @Component({
     selector: 'maps'
@@ -19,13 +20,28 @@ import { MessageService } from 'services/MessageService';
 export class Maps {
     elementRef: ElementRef;
     message: MessageService;
-    constructor(elementRef: ElementRef, @Inject(MessageService) message) {
+    watch: boolean;
+    map: Object;
+    appCache:AppCache;
+    constructor(elementRef: ElementRef, @Inject(MessageService) message, @Inject(AppCache) appCache) {
         this.elementRef = elementRef;
         this.message = message;
+        this.appCache = appCache;
+        this.map = this.appCache.mainMap || {
+            "id": "26488265777198068635747901827",
+            "name": "卫星地图",
+            "baseLayer": "Esri.WorldImagery",
+            "overLayers": {
+                "道路": "MapQuestOpen.HybridOverlay"
+            }
+        };
+        this.appCache.mainMapEmitter.toRx()
+            .subscribe(map=>this.map = map);
     }
 
     onFab() {
         console.log('fab clicked');
+        this.watch = !this.watch;
     }
 
     onPhotoClick(photo) {

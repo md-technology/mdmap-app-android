@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>leaflet-album-map</title>
+
+    <script src="../../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <link rel="import" href="../../bower_components/polymer/polymer.html">
+    <script src="../../bower_components/web-component-tester/browser.js"></script>
+    <script src="../../bower_components/test-fixture/test-fixture-mocha.js"></script>
+    <link rel="import" href="../../bower_components/test-fixture/test-fixture.html">
+
+    <!-- Step 1: import the element to test -->
+    <link rel="import" href="../elements/leaflet-map/leaflet-map.html">
+    <link rel="import" href="../elements/leaflet-cordova-geolocation/leaflet-cordova-geolocation.html">
+
+</head>
+<body>
+
+<test-fixture id="basic">
+    <template>
+        <leaflet-map max-zoom="18">
+            <leaflet-cordova-geolocation watch="[[true]]"></leaflet-cordova-geolocation>
+        </leaflet-map>
+    </template>
+</test-fixture>
+
+<script>
+    suite('leaflet-cordova-geolocation tests', function() {
+        var list, geolocation;
+
+        setup(function() {
+            list = fixture('basic');
+        });
+
+        test('Item lengths should be equalled', function(done) {
+            // Data bindings will stamp out new DOM asynchronously
+            // so wait to check for updates
+            flush(function() {
+                done();
+            });
+        })
+    });
+</script>
+
+</body>
+</html>

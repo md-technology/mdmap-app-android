@@ -1,0 +1,34 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="md-map-menu">
+    <template>
+        <paper-dropdown-menu id="mapSelector" label="主页地图类型"
+                on-selected-item-changed="handleSelectedItem">
+            <paper-menu class="dropdown-content">
+                <template is="dom-repeat" items="[[maps]]" as="map">
+                    <paper-item map="[[map]]">[[map.name]]</paper-item>
+                </template>
+            </paper-menu>
+        </paper-dropdown-menu>
+    </template>
+</dom-module>
+<script>
+    (function () {
+        Polymer({
+            is: 'md-map-menu',
+
+            properties: {
+                maps: {
+                    type: Array
+                }
+            },
+
+            ready: function() {
+            },
+
+            handleSelectedItem: function(e) {
+                this.fire('selected', e.detail.value.map);
+            }
+        });
+    })();
+</script>

@@ -32,10 +32,15 @@ export class UserApi extends AbstractApi {
         }
         if(user.profileCover) {
             user.profileCover.ossKey = 'http://static.photoshows.cn/'+user.profileCover.oss_key;
+        }else {
+            user.profileCover = {};
         }
         if(user.mastheadCover) {
             user.mastheadCover.ossKey = 'http://static.photoshows.cn/'+user.mastheadCover.oss_key;
+        }else {
+            user.mastheadCover = {};
         }
+
         return user;
     }
 
@@ -101,6 +106,17 @@ export class AlbumApi extends AbstractApi {
                 album.featureCollection = FeatureCollection.detransform(album.featureCollection);
                 return album;
             });
+    }
+}
+
+@Injectable()
+export class MapApi extends AbstractApi {
+    constructor(@Inject(Http) http: Http, @Inject(RequestOptions) baseRequestOptions:RequestOptions, @Inject(OauthService) oauthService:OauthService) {
+        super(http, baseRequestOptions, oauthService, 'map');
+    }
+
+    getAll() {
+        return super.all();
     }
 }
 

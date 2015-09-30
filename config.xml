@@ -67,6 +67,7 @@
     <gap:splash gap:platform="ios" height="768" src="www/res/screen/ios/screen-ipad-landscape.png" width="1024" />
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
     <plugin name="cordova-plugin-whitelist" version="1" />
+    <plugin name="cordova-plugin-geolocation" version="1.0.1" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />

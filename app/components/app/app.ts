@@ -1,7 +1,9 @@
 import {Component,
     View,
+    Event,
     ElementRef,
     Inject,
+    EventEmitter,
     bootstrap, bind, NgFor, NgIf} from 'angular2/angular2';
 import {HTTP_BINDINGS} from 'angular2/http';
 import {ROUTER_BINDINGS, LocationStrategy, HashLocationStrategy, RouteConfig, Redirect, RouterOutlet, RouterLink } from 'angular2/router';
@@ -24,7 +26,7 @@ import { MessageService } from 'services/MessageService';
     { path: '/login', component: Login, as: 'login'},
     { path: '/signup', component: Signup, as: 'signup'},
     { path: '/', component: Maps, as: 'maps'},
-    { path: '/user-page', component: UserPage, as: 'userPage'},
+    { path: '/user/:id', component: UserPage, as: 'user'},
     { path: '/group/:id', component: Group, as: 'group'},
     { path: '/album/:id', component: Album, as: 'album'},
     { path: '/settings', component: Settings, as: 'settings'}
@@ -115,6 +117,8 @@ export class App {
 
 export class AppCache {
     _user:User;
+    _mainMap:Object;
+    @Event() mainMapEmitter = new EventEmitter();
     constructor() {}
 
     set user(user) {
@@ -123,6 +127,15 @@ export class AppCache {
 
     get user() {
         return this._user;
+    }
+
+    set mainMap(map) {
+        this._mainMap = map;
+        this.mainMapEmitter.next(this._mainMap);
+    }
+
+    get mainMap() {
+        return this._mainMap;
     }
 }
 

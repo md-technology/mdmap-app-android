@@ -1,13 +1,16 @@
 <style>@import "maps.css";</style>
 
-<leaflet-map no-tap no-zoom-control
+<leaflet-map no-tap no-zoom-control no-default-tile-layer max-zoom="18"
         (tap)="onMapClicked($event)">
-    <leaflet-geolocation enable-high-accuracy
+    <!-- 地图底图供应商 -->
+    <leaflet-tilelayer-provider [map]="map"></leaflet-tilelayer-provider>
+    <!--<leaflet-geolocation enable-high-accuracy
                          set-view
                          [maximum-age]="5000"
                          [max-zoom]="16"
                          #geolocation>
-    </leaflet-geolocation>
+    </leaflet-geolocation>-->
+    <leaflet-cordova-geolocation [watch]="watch" #geolocation></leaflet-cordova-geolocation>
     <!--<leaflet-marker [latitude]="34" [longitude]="120" [title]="'test'" icon="myicon"
             (click)="onMarkerClick($event)">
         <leaflet-divicon id="myicon" classname="icon-marker">
@@ -18,7 +21,7 @@
     <leaflet-panoramio [container]="geolocation.container"
             (photo-click)="onPhotoClick($event)"></leaflet-panoramio>
 </leaflet-map>
-<paper-fab icon="add" (click)="onFab()"></paper-fab>
+<paper-fab [icon]="watch?'maps:my-location':'maps:navigation'" (click)="onFab()"></paper-fab>
 <paper-toolbar id="mapsToolbar">
     <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
     <div class="flex">Maps</div>

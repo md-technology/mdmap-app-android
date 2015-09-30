@@ -19,7 +19,7 @@
                     <span>Logout</span>
                 </a>
 
-                <a [router-link]="['/userPage']" (click)="toggleDrawer()">
+                <a [router-link]="['/user', {'id': id}]" (click)="toggleDrawer()">
                     <iron-icon icon="social:group"></iron-icon>
                     <span>组</span>
                 </a>
